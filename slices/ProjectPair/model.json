@@ -1,0 +1,42 @@
+{
+  "id": "project_pair",
+  "type": "SharedSlice",
+  "name": "ProjectPair",
+  "description": "ProjectPair",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "ProjectPair",
+      "primary": {},
+      "items": {
+        "project": {
+          "type": "Link",
+          "config": {
+            "label": "Project",
+            "select": "document",
+            "customtypes": [
+              "project"
+            ]
+          }
+        },
+        "ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Ratio",
+            "placeholder": "",
+            "options": [
+              "4:5",
+              "1:1",
+              "3:2",
+              "16:9"
+            ]
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}

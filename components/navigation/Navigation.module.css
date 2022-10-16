@@ -1,0 +1,11 @@
+.base {
+  @apply flex p-8 text-3xl justify-between items-center;
+}
+
+.base ul {
+  @apply space-x-4;
+}
+
+.base ul > li {
+  @apply inline-block;
+}

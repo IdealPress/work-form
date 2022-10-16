@@ -1,0 +1,39 @@
+{
+  "_cts": {
+    "home": {},
+    "project": {
+      "about_text": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      }
+    }
+  },
+  "slices": {
+    "ImageSingle": {},
+    "ProjectSingle": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "TextBlock": {
+      "default": {
+        "primary": {
+          "text": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
+        }
+      }
+    },
+    "ProjectPair": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "id": "project",
+  "label": "Project",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        }
+      },
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "uid",
+          "placeholder": ""
+        }
+      },
+      "cover": {
+        "type": "Image",
+        "config": {
+          "label": "Cover",
+          "constraint": {},
+          "thumbnails": [
+            {
+              "name": "4:5",
+              "width": 2000,
+              "height": 2500
+            },
+            {
+              "name": "1:1",
+              "width": 2500,
+              "height": 2500
+            },
+            {
+              "name": "3:2",
+              "width": 2500,
+              "height": 1667
+            },
+            {
+              "name": "16:9",
+              "width": 2500,
+              "height": 1406
+            }
+          ]
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {}
+        }
+      }
+    },
+    "About": {
+      "about_text": {
+        "type": "StructuredText",
+        "config": {
+          "label": "About Text",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em,hyperlink"
+        }
+      },
+      "client": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Client",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "date": {
+        "type": "Date",
+        "config": {
+          "label": "Date",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}
