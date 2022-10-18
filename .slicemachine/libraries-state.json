@@ -1,6 +1,84 @@
 {
   "slices": {
     "components": {
+      "column_block": {
+        "library": "slices",
+        "id": "column_block",
+        "name": "DetailBlock",
+        "description": "DetailBlock",
+        "model": {
+          "id": "column_block",
+          "type": "SharedSlice",
+          "name": "DetailBlock",
+          "description": "DetailBlock",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "DetailBlock",
+              "primary": {
+                "columns": {
+                  "type": "Select",
+                  "config": {
+                    "label": "Columns",
+                    "placeholder": "",
+                    "options": ["1", "2"],
+                    "default_value": "1"
+                  }
+                }
+              },
+              "items": {
+                "title": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Title",
+                    "placeholder": ""
+                  }
+                },
+                "text": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Text",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "multi": "paragraph,strong,em,hyperlink"
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {
+                "title": "ever",
+                "text": [
+                  {
+                    "type": "paragraph",
+                    "text": "Qui enim sint incididunt dolore consectetur laboris sunt amet ad aliqua pariatur consequat.",
+                    "spans": []
+                  }
+                ]
+              }
+            ],
+            "primary": {
+              "columns": "1"
+            },
+            "slice_type": "column_block"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "js"
+        },
+        "screenshotPaths": {}
+      },
       "image_single": {
         "library": "slices",
         "id": "image_single",
@@ -45,9 +123,7 @@
           "default": {
             "variation": "default",
             "version": "sktwi1xtmkfgx8626",
-            "items": [
-              {}
-            ],
+            "items": [{}],
             "primary": {
               "title": [
                 {
@@ -97,9 +173,7 @@
                   "config": {
                     "label": "Project",
                     "select": "document",
-                    "customtypes": [
-                      "project"
-                    ]
+                    "customtypes": ["project"]
                   }
                 },
                 "ratio": {
@@ -107,12 +181,7 @@
                   "config": {
                     "label": "Ratio",
                     "placeholder": "",
-                    "options": [
-                      "4:5",
-                      "1:1",
-                      "3:2",
-                      "16:9"
-                    ]
+                    "options": ["4:5", "1:1", "3:2", "16:9"]
                   }
                 }
               },
@@ -172,9 +241,7 @@
                   "config": {
                     "label": "Project",
                     "select": "document",
-                    "customtypes": [
-                      "project"
-                    ]
+                    "customtypes": ["project"]
                   }
                 },
                 "ratio": {
@@ -182,12 +249,7 @@
                   "config": {
                     "label": "Ratio",
                     "placeholder": "",
-                    "options": [
-                      "4:5",
-                      "1:1",
-                      "3:2",
-                      "16:9"
-                    ]
+                    "options": ["4:5", "1:1", "3:2", "16:9"]
                   }
                 },
                 "size": {
@@ -195,11 +257,7 @@
                   "config": {
                     "label": "Size",
                     "placeholder": "",
-                    "options": [
-                      "Full",
-                      "Medium",
-                      "Small"
-                    ],
+                    "options": ["Full", "Medium", "Small"],
                     "default_value": "Full"
                   }
                 }
@@ -213,9 +271,7 @@
           "default": {
             "variation": "default",
             "version": "sktwi1xtmkfgx8626",
-            "items": [
-              {}
-            ],
+            "items": [{}],
             "primary": {
               "project": {
                 "id": "mock_document_id",
@@ -263,7 +319,7 @@
                     "label": "Text",
                     "placeholder": "",
                     "allowTargetBlank": true,
-                    "single": "paragraph,strong,em,hyperlink"
+                    "multi": "paragraph,strong,em,hyperlink"
                   }
                 },
                 "alignment": {
@@ -271,11 +327,7 @@
                   "config": {
                     "label": "Alignment",
                     "placeholder": "",
-                    "options": [
-                      "Left",
-                      "Center",
-                      "Right"
-                    ],
+                    "options": ["Left", "Center", "Right"],
                     "default_value": "Left"
                   }
                 },
@@ -284,10 +336,7 @@
                   "config": {
                     "label": "Size",
                     "placeholder": "",
-                    "options": [
-                      "Default",
-                      "Large"
-                    ],
+                    "options": ["Default", "Large"],
                     "default_value": "Default"
                   }
                 }
@@ -301,19 +350,17 @@
           "default": {
             "variation": "default",
             "version": "sktwi1xtmkfgx8626",
-            "items": [
-              {}
-            ],
+            "items": [{}],
             "primary": {
               "text": [
                 {
                   "type": "paragraph",
-                  "text": "Nisi veniam officia sit qui veniam.",
+                  "text": "Nisi et id laboris deserunt adipisicing duis sunt cillum minim. Irure ea sint pariatur sunt reprehenderit anim exercitation incididunt. Laboris et velit eiusmod cupidatat laboris id eiusmod mollit adipisicing mollit qui occaecat dolor elit.",
                   "spans": []
                 }
               ],
-              "alignment": "Left",
-              "size": "Large"
+              "alignment": "Center",
+              "size": "Default"
             },
             "slice_type": "text_block"
           }

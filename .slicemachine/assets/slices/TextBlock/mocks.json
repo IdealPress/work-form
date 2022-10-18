@@ -9,12 +9,12 @@
       "text": [
         {
           "type": "paragraph",
-          "text": "Nisi veniam officia sit qui veniam.",
+          "text": "Nisi et id laboris deserunt adipisicing duis sunt cillum minim. Irure ea sint pariatur sunt reprehenderit anim exercitation incididunt. Laboris et velit eiusmod cupidatat laboris id eiusmod mollit adipisicing mollit qui occaecat dolor elit.",
           "spans": []
         }
       ],
-      "alignment": "Left",
-      "size": "Large"
+      "alignment": "Center",
+      "size": "Default"
     },
     "slice_type": "text_block"
   }

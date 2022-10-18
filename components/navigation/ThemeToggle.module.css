@@ -1,0 +1,7 @@
+.base {
+  @apply inline-flex relative items-center cursor-pointer;
+}
+
+.toggle {
+  @apply translate-y-1 w-11 h-6 rounded-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] bg-black dark:bg-white  after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-white;
+}

@@ -8,7 +8,8 @@
           "blocks": 1
         }
       }
-    }
+    },
+    "about": {}
   },
   "slices": {
     "ImageSingle": {},
@@ -33,6 +34,20 @@
       "default": {
         "primary": {},
         "items": {}
+      }
+    },
+    "DetailBlock": {},
+    "DetailBlock": {
+      "default": {
+        "primary": {},
+        "items": {
+          "text": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
+        }
       }
     }
   }

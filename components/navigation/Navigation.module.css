@@ -1,5 +1,5 @@
 .base {
-  @apply flex p-8 text-3xl justify-between items-center;
+  @apply flex p-8 text-3xl justify-between items-center dark:bg-black;
 }
 
 .base ul {
@@ -8,4 +8,8 @@
 
 .base ul > li {
   @apply inline-block;
+}
+
+.base a {
+  @apply focus:outline focus:outline-[3px] focus:outline-offset-4 focus:outline-gray-300;
 }
