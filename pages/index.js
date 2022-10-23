@@ -22,21 +22,35 @@ Home.getLayout = function getLayout(page) {
   return <DefaultLayout>{page}</DefaultLayout>;
 };
 
-// const homeGraphQuery = `{
-//   home {
-//     ...homeFields
-//     slices {
-//       ...on project_single {
-//         ...project_singleFields
-//       }
-//     }
-//   }
-// }`;
+const homeGraphQuery = `{
+  home {
+    ...homeFields
+    slices {
+      ...on project_single {
+        variation {
+          ...on default {
+            primary {
+              image
+              ratio
+              size
+              project {
+                ...on project {
+                  ...projectFields
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}`;
+
 
 export async function getStaticProps({ previewData }) {
   const client = createClient({ previewData });
   const content = await client.getSingle("home", {
-    // graphQuery: homeGraphQuery,
+    graphQuery: homeGraphQuery
   });
   return {
     props: { content },
