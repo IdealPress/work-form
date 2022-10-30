@@ -1,4 +1,5 @@
 // Modules
+import { useState } from "react";
 import { SliceZone } from "@prismicio/react";
 
 // Lib
@@ -6,15 +7,19 @@ import { createClient } from "prismicio";
 import { components } from "slices";
 
 // Components
-import { DefaultLayout } from "components";
+import { DefaultLayout, Splash } from "components";
 
 export default function Home({ content }) {
+  const [showSplash, setShowSplash] = useState(true);
   return (
-    <main className="space-y-12">
-      {content?.data?.slices && (
-        <SliceZone slices={content?.data?.slices} components={components} context={content} />
-      )}
-    </main>
+    <>
+      {showSplash && <Splash text={['Robots, Production & the Workshop.', 'Culture, Vernacular & the Town', 'Education, Printing & the Park']} hide={() => {setShowSplash(false)}} />}
+      <main className="space-y-12">
+        {content?.data?.slices && (
+          <SliceZone slices={content?.data?.slices} components={components} context={content} />
+        )}
+      </main>
+    </>
   );
 }
 

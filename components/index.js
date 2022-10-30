@@ -10,5 +10,9 @@ export { default as LinkWrapper } from "./helpers/LinkWrapper.js";
 export { default as Navigation } from "./navigation/Navigation.js";
 export { default as ThemeToggle } from "./navigation/ThemeToggle.js";
 
+// Splash
+export { default as Splash } from "./splash/Splash.js";
+
+
 // Footer
 export { default as Footer } from "./footer/Footer.js";
