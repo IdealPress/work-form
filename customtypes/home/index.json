@@ -25,13 +25,10 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "project_pair": {
-              "type": "SharedSlice"
-            },
-            "project_single": {
-              "type": "SharedSlice"
-            },
             "text_block": {
+              "type": "SharedSlice"
+            },
+            "project": {
               "type": "SharedSlice"
             }
           }

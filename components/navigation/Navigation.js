@@ -4,24 +4,15 @@ import { ThemeToggle } from "components";
 
 import styles from "./Navigation.module.css";
 
-export default function Navigation() {
+export default function Navigation({children = <li></li>}) {
   return (
     <nav className={styles.base}>
       <Link href="/">
         <a>work-form</a>
       </Link>
       <ul>
-        <li>
-          <Link href="/about">
-            <a>about</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/archive">
-            <a>archive</a>
-          </Link>
-        </li>
-        <li>
+        {children}
+        <li className={styles.toggle}>
           <ThemeToggle />
         </li>
       </ul>

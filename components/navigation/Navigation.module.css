@@ -1,9 +1,9 @@
 .base {
-  @apply flex p-8 text-3xl justify-between items-center dark:bg-black sticky top-0 z-10;
+  @apply flex p-8 text-xl sm:text-2xl md:text-3xl justify-between items-center dark:bg-black sticky top-0 z-10;
 }
 
 .base ul {
-  @apply space-x-4;
+  @apply space-x-2.5 sm:space-x-4;
 }
 
 .base ul > li {
@@ -12,4 +12,15 @@
 
 .base a {
   @apply focus:outline focus:outline-[3px] focus:outline-offset-4 focus:outline-gray-300;
+}
+
+.base button {
+  @apply focus:outline focus:outline-[3px] focus:outline-offset-4 focus:outline-gray-300;
+}
+
+/* md */
+@media not all and (min-width: 768px) { 
+  .toggle {
+    display: none !important;
+  }
 }

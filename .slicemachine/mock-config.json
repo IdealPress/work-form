@@ -9,10 +9,15 @@
         }
       }
     },
-    "about": {}
+    "about": {},
+    "site": {}
   },
   "slices": {
-    "ImageSingle": {},
+    "ImageSingle": {
+      "default": {
+        "primary": {}
+      }
+    },
     "ProjectSingle": {
       "default": {
         "primary": {}
@@ -47,6 +52,30 @@
             }
           }
         }
+      }
+    },
+    "ImageMultiple": {},
+    "Image": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
+    },
+    "Project": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
+    },
+    "HomeItem": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
+    },
+    "VideoBlock": {
+      "default": {
+        "primary": {}
       }
     }
   }

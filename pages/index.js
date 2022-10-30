@@ -12,7 +12,7 @@ export default function Home({ content }) {
   return (
     <main className="space-y-12">
       {content?.data?.slices && (
-        <SliceZone slices={content?.data?.slices} components={components} />
+        <SliceZone slices={content?.data?.slices} components={components} context={content} />
       )}
     </main>
   );
@@ -26,13 +26,11 @@ const homeGraphQuery = `{
   home {
     ...homeFields
     slices {
-      ...on project_single {
+      ...on project {
         variation {
           ...on default {
-            primary {
-              image
-              ratio
-              size
+            items {
+              ...itemsFields
               project {
                 ...on project {
                   ...projectFields
