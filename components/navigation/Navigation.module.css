@@ -11,11 +11,11 @@
 }
 
 .base a {
-  @apply focus:outline focus:outline-[3px] focus:outline-offset-4 focus:outline-gray-300;
+  @apply focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black hover:text-gray-300;
 }
 
 .base button {
-  @apply focus:outline focus:outline-[3px] focus:outline-offset-4 focus:outline-gray-300;
+  @apply focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black;
 }
 
 /* md */

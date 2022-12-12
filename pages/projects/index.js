@@ -9,11 +9,12 @@ export default function Projects({ content }) {
       <main className="space-y-12 px-6">
         <section className="grid sm:grid-cols-2 md:grid-cols-3 gap-12">
           {content.map((project, index) => (
-            <Link href={`/archive/${project.uid}`} key={index}>
+            <Link href={`/projects/${project.uid}`} key={index}>
               <a>
                 <div className="w-full h-full space-y-2">
                   <figure className="aspect-[3/2]">
                     <Image
+                      className="transition duration-300 hover:scale-110"
                       src={project?.data?.cover['3:2']?.url}
                       width={project?.data?.cover['3:2']?.dimensions?.width}
                       height={project?.data?.cover['3:2']?.dimensions?.height}

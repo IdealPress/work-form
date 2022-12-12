@@ -31,6 +31,15 @@ const homeGraphQuery = `{
   home {
     ...homeFields
     slices {
+      ...on text_block {
+        variation {
+          ...on default {
+            primary {
+              ...primaryFields
+            }
+          }
+        }
+      }
       ...on project {
         variation {
           ...on default {

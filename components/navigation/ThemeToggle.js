@@ -24,7 +24,7 @@ export default function ThemeToggle() {
         onChange={toggleTheme}
       />
       <div
-        className={`${styles.toggle} peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-gray-300 peer-checked:after:translate-x-full peer-checked:after:border-white peer-checked:after:bg-black peer-checked:bg-white`}
+        className={`${styles.toggle} peer-focus:outline-none peer-checked:after:translate-x-full peer-checked:after:border-white peer-checked:after:bg-black peer-checked:bg-white`}
       />
     </label>
   );

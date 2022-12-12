@@ -21,8 +21,8 @@ export default function DefaultLayout({ children }) {
             </Link>
           </li>
           <li>
-            <Link href="/archive">
-              <a>archive</a>
+            <Link href="/projects">
+              <a>projects</a>
             </Link>
           </li>
         </Navigation>

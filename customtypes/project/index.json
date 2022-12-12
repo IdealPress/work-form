@@ -91,6 +91,22 @@
           "label": "Date",
           "placeholder": ""
         }
+      },
+      "more": {
+        "type": "StructuredText",
+        "config": {
+          "label": "More",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,hyperlink,rtl"
+        }
+      },
+      "slices1": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {}
+        }
       }
     }
   }

@@ -40,8 +40,8 @@ export default function ProjectLayout({ children }) {
                         <button onClick={toggleText}>{router.query?.text ? 'image' : 'text'}</button>
                     </li>
                     <li>
-                    <Link href="/archive">
-                        <a>archive</a>
+                    <Link href="/projects">
+                        <a>projects</a>
                     </Link>
                     </li>
                 </Navigation>

@@ -9,7 +9,12 @@ const Image = ({ slice, context }) => (
         <LinkWrapper url={item.link?.url}>
           <SizeWrapper size={item.size}>
             <figure>
-              <NextImage src={item.image[item.ratio].url} width={item.image[item.ratio].dimensions.width} height={item.image[item.ratio].dimensions.height} />
+              <NextImage
+                className="transition group-hover:scale-105 group-focus:hover-scale-105"
+                src={item.image[item.ratio].url}
+                width={item.image[item.ratio].dimensions.width}
+                height={item.image[item.ratio].dimensions.height}  
+              />
               <figcaption>
                 {item.show_caption && (
                   <>

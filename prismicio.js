@@ -11,7 +11,7 @@ export function linkResolver(doc) {
     case "home":
       return "/";
     case "project":
-      return `/archive/${doc.uid}`;
+      return `/projects/${doc.uid}`;
     default:
       return null;
   }

@@ -26,8 +26,8 @@ export default function Footer() {
             </Link>
           </li>
           <li>
-            <Link href="/archive">
-              <a>Archive</a>
+            <Link href="/projects">
+              <a>Projects</a>
             </Link>
           </li>
           <li>

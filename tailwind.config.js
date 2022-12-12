@@ -15,8 +15,18 @@ module.exports = {
       },
       typography: (theme) => ({
         DEFAULT: {
-          css: {},
+          css: {
+            color: theme('colors.inherit'),
+            a: {
+              '&:hover': {
+                color: theme('colors.gray.300'),
+              }
+            }
+          },
         },
+        lg: {
+          
+        }
       }),
     },
   },

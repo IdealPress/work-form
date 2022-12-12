@@ -40,6 +40,12 @@ export default function Project({ content }) {
                   </p>
                 </div>
               )}
+              {content?.data?.more && (
+                <div>
+                  <p className="text-xs">More</p>
+                  <PrismicRichText field={content.data.more} />
+                </div>
+              )}
             </section>
           </>
         ) : (
