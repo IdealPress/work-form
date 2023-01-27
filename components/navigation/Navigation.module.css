@@ -15,7 +15,7 @@
 }
 
 .base button {
-  @apply focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black;
+  @apply focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black hover:text-gray-300;
 }
 
 /* md */

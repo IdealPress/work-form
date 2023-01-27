@@ -7,7 +7,7 @@ export default function Projects({ content }) {
   return (
     <>
       <main className="space-y-12 px-6">
-        <section className="grid sm:grid-cols-2 md:grid-cols-3 gap-12">
+        <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
           {content.map((project, index) => (
             <Link href={`/projects/${project.uid}`} key={index}>
               <a>

@@ -40,7 +40,7 @@ export default function Project({ content }) {
                   </p>
                 </div>
               )}
-              {content?.data?.more && (
+              {content?.data?.more?.length > 0 && (
                 <div>
                   <p className="text-xs">More</p>
                   <PrismicRichText field={content.data.more} />
