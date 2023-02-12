@@ -12,6 +12,7 @@ const VideoBlock = ({ slice }) => (
         autoplay={true}
         muted={true}
         controls={false}
+        loop={true}
       />
     </SizeWrapper>
   </section>

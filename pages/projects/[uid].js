@@ -1,25 +1,33 @@
+import dynamic from 'next/dynamic'
+import { useRouter } from "next/router";
 import * as prismicH from "@prismicio/helpers";
 import { PrismicRichText, SliceZone } from "@prismicio/react";
 
 import { createClient, linkResolver } from "prismicio";
-import { components } from "slices";
 
 import { ProjectLayout } from "components";
-import { useRouter } from "next/router";
+import { components } from "slices";
+
+
+const Sticker = dynamic(() =>
+  import('../../components').then((mod) => mod.Sticker), {
+    ssr: false,
+  }
+)
 
 export default function Project({ content }) {
   const router = useRouter();
   return (
     <>
-      <main className="space-y-12">
+      <main className="space-y-20 mt-8">
         {router.query.text ? (
           <>
-            <section className="mx-8 lg:w-3/5">
-              <div className="prose-lg max-w-none">
+            <section className="mx-6 md:mx-8 lg:w-3/5">
+              <div className="prose-lg max-w-[65ch]">
                 <PrismicRichText field={content.data.about_text} />
               </div>
             </section>
-            <section className="mx-8 lg:w-3/5 space-y-4">
+            <section className="mx-6 md:mx-8 lg:w-3/5 space-y-4">
               <div>
                 <p className="text-xs">Client</p>
                 <PrismicRichText field={content.data.client} />
@@ -50,6 +58,7 @@ export default function Project({ content }) {
           </>
         ) : (
           <>
+          <Sticker key={router.asPath} />
           {content?.data?.slices && (
             <SliceZone slices={content?.data?.slices} components={components} context={content} />
           )}
@@ -61,7 +70,7 @@ export default function Project({ content }) {
 }
 
 Project.getLayout = function getLayout(page) {
-  return <ProjectLayout>{page}</ProjectLayout>;
+  return <ProjectLayout title={page.props.content.data.title}>{page}</ProjectLayout>;
 };
 
 export async function getStaticPaths() {

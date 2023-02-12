@@ -1,6 +1,5 @@
 import React from 'react'
-import NextImage from "next/image"
-import { SizeWrapper, LinkWrapper } from 'components'
+import { SizeWrapper, LinkWrapper, ImageWrapper } from 'components'
 
 const Image = ({ slice, context }) => {
   return (
@@ -10,33 +9,22 @@ const Image = ({ slice, context }) => {
           <LinkWrapper url={item.link?.url}>
             <SizeWrapper size={item.size}>
               <figure>
-                {item.ratio !== "main" ? (
-                  <NextImage
-                    className="transition group-hover:scale-105 group-focus:hover-scale-105"
-                    src={item.image[item.ratio]?.url}
-                    width={item.image[item.ratio]?.dimensions.width}
-                    height={item.image[item.ratio]?.dimensions.height}  
-                  />
-                ) : (
-                  <NextImage
-                    className="transition group-hover:scale-105 group-focus:hover-scale-105"
-                    src={item.image?.url}
-                    width={item.image?.dimensions.width}
-                    height={item.image?.dimensions.height}  
-                  />
-                )
-                }
-                <figcaption>
+                <ImageWrapper item={item} /> 
+                <figcaption className="mt-2 leading-tight text-base md:text-lg">
                   {item.show_caption && (
                     <>
                       {item.caption ? (
-                        <p>{item.caption}</p>
+                        <p className="text-gray-400 ">
+                          {item.caption}
+                        </p>
                       ) : (
-                        <p className="leading-snug md:text-lg">
-                            {context.data.title}
-                            {context.tags.map((tag, index) => (
-                                <span className="ml-2 text-gray-400" key={index}>{tag}</span>
-                            ))}
+                        <p className="group-focus:text-gray-400 group-hover:text-gray-400">
+                          {context.data.title}
+                          {context.tags.map((tag, index) => (
+                            <span className="ml-2 text-gray-400" key={index}>
+                              {tag}
+                            </span>
+                          ))}
                         </p>
                       )}
                     </>

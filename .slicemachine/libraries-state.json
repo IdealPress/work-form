@@ -350,6 +350,7 @@
                   "config": {
                     "label": "Link",
                     "placeholder": "",
+                    "allowTargetBlank": true,
                     "select": null
                   }
                 },
@@ -397,7 +398,7 @@
                   },
                   "alt": null,
                   "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1547082299-de196ea013d6",
+                  "url": "https://images.unsplash.com/photo-1560457079-9a6532ccb118",
                   "4:5": {
                     "dimensions": {
                       "width": 2000,
@@ -405,7 +406,7 @@
                     },
                     "alt": null,
                     "copyright": null,
-                    "url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef"
+                    "url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9"
                   },
                   "1:1": {
                     "dimensions": {
@@ -414,7 +415,7 @@
                     },
                     "alt": null,
                     "copyright": null,
-                    "url": "https://images.unsplash.com/photo-1587905069134-008460d7a636"
+                    "url": "https://images.unsplash.com/photo-1560762484-813fc97650a0"
                   },
                   "3:2": {
                     "dimensions": {
@@ -423,7 +424,7 @@
                     },
                     "alt": null,
                     "copyright": null,
-                    "url": "https://images.unsplash.com/photo-1587840171670-8b850147754e"
+                    "url": "https://images.unsplash.com/photo-1600861194802-a2b11076bc51"
                   },
                   "16:9": {
                     "dimensions": {
@@ -432,17 +433,17 @@
                     },
                     "alt": null,
                     "copyright": null,
-                    "url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db"
+                    "url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853"
                   }
                 },
-                "ratio": "1:1",
-                "size": "Full",
+                "ratio": "4:5",
+                "size": "Medium",
                 "link": {
                   "link_type": "Web",
                   "url": "http://twitter.com"
                 },
-                "caption": "power",
-                "show_caption": true
+                "caption": "eat",
+                "show_caption": false
               }
             ],
             "primary": {},
@@ -479,7 +480,7 @@
                     "label": "Text",
                     "placeholder": "",
                     "allowTargetBlank": true,
-                    "multi": "paragraph,strong,em,hyperlink"
+                    "multi": "paragraph,strong,em,hyperlink,image"
                   }
                 },
                 "alignment": {
@@ -524,11 +525,11 @@
               "text": [
                 {
                   "type": "paragraph",
-                  "text": "Nisi et id laboris deserunt adipisicing duis sunt cillum minim. Irure ea sint pariatur sunt reprehenderit anim exercitation incididunt. Laboris et velit eiusmod cupidatat laboris id eiusmod mollit adipisicing mollit qui occaecat dolor elit.",
+                  "text": "Nostrud laboris cupidatat anim incididunt. Fugiat pariatur reprehenderit minim. Cupidatat quis tempor nostrud cillum esse magna.",
                   "spans": []
                 }
               ],
-              "alignment": "Center",
+              "alignment": "Left",
               "size": "Default"
             },
             "slice_type": "text_block"

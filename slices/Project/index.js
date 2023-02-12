@@ -1,6 +1,7 @@
 import React from 'react'
 import NextImage from "next/image"
-import { SizeWrapper, LinkWrapper } from 'components'
+import { SizeWrapper, LinkWrapper, ImageWrapper } from 'components'
+import { useRandomColor } from 'lib'
 
 
 const Project = ({ slice, context }) => {
@@ -10,7 +11,7 @@ const Project = ({ slice, context }) => {
   }
 
   return (
-    <section className="flex items-center justify-center px-8">
+    <section className="space-y-20 md:space-y-0 md:flex items-center justify-center px-8">
       {slice.items.map((item, index) => (
         <div className="w-full" key={index}>
           <LinkWrapper 
@@ -18,31 +19,19 @@ const Project = ({ slice, context }) => {
           >
             <SizeWrapper size={item.size}>
               <figure>
-                {item.ratio === 'main' ? (
-                  <NextImage
-                    className="transition duration-300 group-hover:scale-105 group-focus:scale-105"
-                    src={item.image.url} 
-                    width={item.image.dimensions.width} 
-                    height={item.image.dimensions.height} 
-                  />
-                ) : (
-                  <NextImage 
-                    className="transition duration-300 group-hover:scale-105 group-focus:scale-105"
-                    src={item.image[item.ratio].url}
-                    width={item.image[item.ratio].dimensions.width}
-                    height={item.image[item.ratio].dimensions.height} 
-                  />
-                )}
+                <ImageWrapper item={item} /> 
                 <figcaption>
                   {item.show_caption && (
                     <>
                       {item.caption ? (
-                        <p>{item.caption}</p>
+                        <p className="leading-snug text-base md:text-lg">
+                          {item.caption}
+                        </p>
                       ) : (
-                        <p className="leading-snug md:text-lg transition group-focus:text-gray-300 group-hover:text-gray-300">
+                        <p className="leading-snug text-base md:text-lg group-focus:text-gray-400 group-hover:text-gray-400">
                             {item.project?.data?.title}
                             {item.project?.tags?.map((tag, index) => (
-                                <span className="ml-3 text-gray-300" key={index}>{tag}</span>
+                                <span className="ml-3 text-gray-400" key={index}>{tag}</span>
                             ))}
                         </p>
                       )}

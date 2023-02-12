@@ -1,17 +1,53 @@
 {
-  "id": "mock-doc-id",
-  "url": null,
-  "type": "about",
-  "href": null,
-  "tags": [],
-  "first_publication_date": "1970-01-01T00:00:01+0000",
-  "last_publication_date": "1970-01-01T00:00:01+0000",
-  "slugs": [],
-  "linked_documents": [],
-  "lang": "en-us",
-  "alternate_languages": [],
-  "data": {
-    "title": "actually",
-    "slices": []
+  "title": {
+    "__TYPE__": "FieldContent",
+    "value": "dirty",
+    "type": "Text"
+  },
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "happy"
+  },
+  "slices": {
+    "__TYPE__": "SliceContentType",
+    "value": [
+      {
+        "key": "text_block$d3ab6bf6-4a73-4555-bac6-23460e3783b8",
+        "name": "text_block",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "text": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Aliqua do fugiat cupidatat ea ullamco Lorem tempor incididunt nulla commodo non ullamco. Veniam aute duis laboris mollit sint id ad."
+                  }
+                }
+              ]
+            },
+            "alignment": {
+              "__TYPE__": "FieldContent",
+              "value": "Left",
+              "type": "Select"
+            },
+            "size": {
+              "__TYPE__": "FieldContent",
+              "value": "Default",
+              "type": "Select"
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": []
+            }
+          ]
+        }
+      }
+    ]
   }
 }

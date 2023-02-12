@@ -3,5 +3,5 @@
 }
 
 .toggle {
-  @apply translate-y-1 w-11 h-6 rounded-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] bg-black dark:bg-white  after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-white;
+  @apply translate-y-1 w-9 h-5 lg:w-11 lg:h-6 rounded-full after:content-[''] after:absolute after:top-[1.5px] lg:after:top-[2px] after:left-[1.5px] lg:after:left-[2px] bg-black dark:bg-white  after:bg-white after:border-gray-400 after:border after:rounded-full after:h-4 lg:after:h-5  after:w-4 lg:after:w-5 after:transition-all dark:border-white;
 }

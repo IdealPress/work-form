@@ -18,6 +18,9 @@ module.exports = {
           css: {
             color: theme('colors.inherit'),
             a: {
+              'text-decoration': 'underline',
+              'text-underline-offset': '1px',
+              'text-decoration-thickness': '2px',
               '&:hover': {
                 color: theme('colors.gray.300'),
               }
@@ -25,7 +28,22 @@ module.exports = {
           },
         },
         lg: {
-          
+          css: {
+            a: {
+              'text-decoration': 'underline',
+              'text-underline-offset': '1px',
+              'text-decoration-thickness': '2px',
+            }
+          }
+        },
+        xl: {
+          css: {
+            a: {
+              'text-decoration': 'underline',
+              'text-underline-offset': '1px',
+              'text-decoration-thickness': '2px',
+            }
+          }
         }
       }),
     },

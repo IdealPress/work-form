@@ -4,9 +4,9 @@ const selectSize = (size) => {
   const sizeLowerCase = size?.toLowerCase();
   switch(sizeLowerCase) {
     case "small":
-      return "w-1/2 md:w-1/3";
+      return "w-full md:w-1/3";
     case "medium":
-      return "w-4/5 md:w-2/3";
+      return "w-full md:w-2/3";
     default:
       return "w-full";
   }

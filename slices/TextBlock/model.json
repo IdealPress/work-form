@@ -17,32 +17,7 @@
             "label": "Text",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph,strong,em,hyperlink"
-          }
-        },
-        "alignment": {
-          "type": "Select",
-          "config": {
-            "label": "Alignment",
-            "placeholder": "",
-            "options": [
-              "Left",
-              "Center",
-              "Right"
-            ],
-            "default_value": "Left"
-          }
-        },
-        "size": {
-          "type": "Select",
-          "config": {
-            "label": "Size",
-            "placeholder": "",
-            "options": [
-              "Default",
-              "Large"
-            ],
-            "default_value": "Default"
+            "multi": "paragraph,strong,em,hyperlink,image"
           }
         }
       },

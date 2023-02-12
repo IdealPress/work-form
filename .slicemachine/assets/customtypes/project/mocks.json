@@ -1,85 +1,408 @@
 {
-  "id": "mock-doc-id",
-  "url": null,
-  "type": "project",
-  "href": null,
-  "tags": [],
-  "first_publication_date": "1970-01-01T00:00:01+0000",
-  "last_publication_date": "1970-01-01T00:00:01+0000",
-  "slugs": [],
-  "linked_documents": [],
-  "lang": "en-us",
-  "alternate_languages": [],
-  "data": {
-    "title": "sky",
-    "cover": {
-      "dimensions": {
-        "width": 900,
-        "height": 500
+  "title": {
+    "__TYPE__": "FieldContent",
+    "value": "am",
+    "type": "Text"
+  },
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "slowly"
+  },
+  "cover": {
+    "__TYPE__": "ImageContent",
+    "origin": {
+      "id": "main",
+      "url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88",
+      "width": 3168,
+      "height": 4752
+    },
+    "url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88",
+    "width": 3168,
+    "height": 4752,
+    "edit": {
+      "zoom": 1,
+      "crop": {
+        "x": 0,
+        "y": 0
       },
-      "alt": null,
-      "copyright": null,
-      "url": "https://images.unsplash.com/photo-1587653915936-5623ea0b949a",
+      "background": "transparent"
+    },
+    "thumbnails": {
       "4:5": {
-        "dimensions": {
-          "width": 2000,
-          "height": 2500
+        "origin": {
+          "id": "4:5",
+          "url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b",
+          "width": 3560,
+          "height": 5340
         },
-        "alt": null,
-        "copyright": null,
-        "url": "https://images.unsplash.com/photo-1587840171670-8b850147754e"
+        "url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b?rect=0%2C445%2C3560%2C4450&w=2000&h=2500",
+        "width": 2000,
+        "height": 2500,
+        "edit": {
+          "zoom": 1,
+          "crop": {
+            "x": 0,
+            "y": 445
+          },
+          "background": "transparent"
+        }
       },
       "1:1": {
-        "dimensions": {
-          "width": 2500,
-          "height": 2500
+        "origin": {
+          "id": "1:1",
+          "url": "https://images.unsplash.com/photo-1587614295999-6c1c13675117",
+          "width": 3810,
+          "height": 5715
         },
-        "alt": null,
-        "copyright": null,
-        "url": "https://images.unsplash.com/photo-1587905069134-008460d7a636"
+        "url": "https://images.unsplash.com/photo-1587614295999-6c1c13675117?rect=0%2C953%2C3810%2C3810&w=2500&h=2500",
+        "width": 2500,
+        "height": 2500,
+        "edit": {
+          "zoom": 1,
+          "crop": {
+            "x": 0,
+            "y": 953
+          },
+          "background": "transparent"
+        }
       },
       "3:2": {
-        "dimensions": {
-          "width": 2500,
-          "height": 1667
+        "origin": {
+          "id": "3:2",
+          "url": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1",
+          "width": 5616,
+          "height": 3744
         },
-        "alt": null,
-        "copyright": null,
-        "url": "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
+        "url": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?rect=1%2C0%2C5615%2C3744&w=2500&h=1667",
+        "width": 2500,
+        "height": 1667,
+        "edit": {
+          "zoom": 1,
+          "crop": {
+            "x": 1,
+            "y": 0
+          },
+          "background": "transparent"
+        }
       },
       "16:9": {
-        "dimensions": {
-          "width": 2500,
-          "height": 1406
+        "origin": {
+          "id": "16:9",
+          "url": "https://images.unsplash.com/photo-1547082299-de196ea013d6",
+          "width": 4272,
+          "height": 2848
         },
-        "alt": null,
-        "copyright": null,
-        "url": "https://images.unsplash.com/photo-1607582278043-57198ac8da43"
+        "url": "https://images.unsplash.com/photo-1547082299-de196ea013d6?rect=0%2C223%2C4272%2C2403&w=2500&h=1406",
+        "width": 2500,
+        "height": 1406,
+        "edit": {
+          "zoom": 1,
+          "crop": {
+            "x": 0,
+            "y": 223
+          },
+          "background": "transparent"
+        }
       }
-    },
-    "slices": [],
-    "about_text": [
+    }
+  },
+  "slices": {
+    "__TYPE__": "SliceContentType",
+    "value": [
+      {
+        "key": "image_multiple$6ed5b0f6-eaab-4fbc-92bd-893e5530fcce",
+        "name": "image_multiple",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {},
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": [
+                [
+                  "image",
+                  {
+                    "__TYPE__": "ImageContent",
+                    "origin": {
+                      "id": "main",
+                      "url": "https://images.unsplash.com/photo-1607582278038-6bebbd4d7b72",
+                      "width": 4010,
+                      "height": 4010
+                    },
+                    "url": "https://images.unsplash.com/photo-1607582278038-6bebbd4d7b72",
+                    "width": 4010,
+                    "height": 4010,
+                    "edit": {
+                      "zoom": 1,
+                      "crop": {
+                        "x": 0,
+                        "y": 0
+                      },
+                      "background": "transparent"
+                    },
+                    "thumbnails": {
+                      "4:5": {
+                        "origin": {
+                          "id": "4:5",
+                          "url": "https://images.unsplash.com/photo-1587614295999-6c1c13675117",
+                          "width": 3810,
+                          "height": 5715
+                        },
+                        "url": "https://images.unsplash.com/photo-1587614295999-6c1c13675117?rect=0%2C476%2C3810%2C4763&w=2000&h=2500",
+                        "width": 2000,
+                        "height": 2500,
+                        "edit": {
+                          "zoom": 1,
+                          "crop": {
+                            "x": 0,
+                            "y": 476
+                          },
+                          "background": "transparent"
+                        }
+                      },
+                      "1:1": {
+                        "origin": {
+                          "id": "1:1",
+                          "url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef",
+                          "width": 4000,
+                          "height": 6000
+                        },
+                        "url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?rect=0%2C1000%2C4000%2C4000&w=2500&h=2500",
+                        "width": 2500,
+                        "height": 2500,
+                        "edit": {
+                          "zoom": 1,
+                          "crop": {
+                            "x": 0,
+                            "y": 1000
+                          },
+                          "background": "transparent"
+                        }
+                      },
+                      "3:2": {
+                        "origin": {
+                          "id": "3:2",
+                          "url": "https://images.unsplash.com/photo-1586952518485-11b180e92764",
+                          "width": 4172,
+                          "height": 4000
+                        },
+                        "url": "https://images.unsplash.com/photo-1586952518485-11b180e92764?rect=0%2C609%2C4172%2C2782&w=2500&h=1667",
+                        "width": 2500,
+                        "height": 1667,
+                        "edit": {
+                          "zoom": 1,
+                          "crop": {
+                            "x": 0,
+                            "y": 609
+                          },
+                          "background": "transparent"
+                        }
+                      },
+                      "16:9": {
+                        "origin": {
+                          "id": "16:9",
+                          "url": "https://images.unsplash.com/photo-1607582278043-57198ac8da43",
+                          "width": 4024,
+                          "height": 4024
+                        },
+                        "url": "https://images.unsplash.com/photo-1607582278043-57198ac8da43?rect=0%2C880%2C4024%2C2263&w=2500&h=1406",
+                        "width": 2500,
+                        "height": 1406,
+                        "edit": {
+                          "zoom": 1,
+                          "crop": {
+                            "x": 0,
+                            "y": 880
+                          },
+                          "background": "transparent"
+                        }
+                      }
+                    }
+                  }
+                ],
+                [
+                  "ratio",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "16:9",
+                    "type": "Select"
+                  }
+                ],
+                [
+                  "size",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "Full",
+                    "type": "Select"
+                  }
+                ],
+                [
+                  "link",
+                  {
+                    "__TYPE__": "LinkContent",
+                    "value": {
+                      "__TYPE__": "ExternalLink",
+                      "url": "https://slicemachine.dev"
+                    }
+                  }
+                ],
+                [
+                  "caption",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "nearby",
+                    "type": "Text"
+                  }
+                ],
+                [
+                  "show_caption",
+                  {
+                    "__TYPE__": "BooleanContent",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "key": "text_block$32ab5aa9-2dd3-44d2-8b07-00b3a6ceee5f",
+        "name": "text_block",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "text": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Incididunt dolor labore duis. Occaecat quis cillum laboris laboris velit."
+                  }
+                }
+              ]
+            },
+            "alignment": {
+              "__TYPE__": "FieldContent",
+              "value": "Center",
+              "type": "Select"
+            },
+            "size": {
+              "__TYPE__": "FieldContent",
+              "value": "Default",
+              "type": "Select"
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": []
+            }
+          ]
+        }
+      },
+      {
+        "key": "video_block$b1920f89-e0b4-4d8d-8b80-642566d15afb",
+        "name": "video_block",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "vimeo_embed": {
+              "embed_url": "https://twitter.com/prismicio/status/1354112310252630016",
+              "author_name": "Prismic",
+              "author_url": "https://twitter.com/prismicio",
+              "html": "<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">We&#39;re launching a new <a href=\"https://twitter.com/hashtag/SliceContest?src=hash&amp;ref_src=twsrc%5Etfw\">#SliceContest</a> tomorrow along with Slice Machine upgrades.<br><br>Want to know more? Join us at tomorrow&#39;s Product Meet-up👇<a href=\"https://t.co/prYSypiAvB\">https://t.co/prYSypiAvB</a><br><br>We can&#39;t tell you any further details for now, but here&#39;s a sneak peek at the prizes👀 <a href=\"https://t.co/fV1eoGlEBh\">pic.twitter.com/fV1eoGlEBh</a></p>&mdash; Prismic (@prismicio) <a href=\"https://twitter.com/prismicio/status/1354112310252630016?ref_src=twsrc%5Etfw\">January 26, 2021</a></blockquote>\n<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>\n",
+              "width": 550,
+              "height": null,
+              "type": "rich",
+              "cache_age": "3153600000",
+              "provider_name": "Twitter",
+              "provider_url": "http://www.twitter.com/",
+              "version": "1.0",
+              "all": {
+                "embed_url": "https://twitter.com/prismicio/status/1354112310252630016",
+                "author_name": "Prismic",
+                "author_url": "https://twitter.com/prismicio",
+                "html": "<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">We&#39;re launching a new <a href=\"https://twitter.com/hashtag/SliceContest?src=hash&amp;ref_src=twsrc%5Etfw\">#SliceContest</a> tomorrow along with Slice Machine upgrades.<br><br>Want to know more? Join us at tomorrow&#39;s Product Meet-up👇<a href=\"https://t.co/prYSypiAvB\">https://t.co/prYSypiAvB</a><br><br>We can&#39;t tell you any further details for now, but here&#39;s a sneak peek at the prizes👀 <a href=\"https://t.co/fV1eoGlEBh\">pic.twitter.com/fV1eoGlEBh</a></p>&mdash; Prismic (@prismicio) <a href=\"https://twitter.com/prismicio/status/1354112310252630016?ref_src=twsrc%5Etfw\">January 26, 2021</a></blockquote>\n<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>\n",
+                "width": 550,
+                "height": null,
+                "type": "rich",
+                "cache_age": "3153600000",
+                "provider_name": "Twitter",
+                "provider_url": "http://www.twitter.com/",
+                "version": "1.0"
+              },
+              "__TYPE__": "EmbedContent"
+            },
+            "size": {
+              "__TYPE__": "FieldContent",
+              "value": "Full",
+              "type": "Select"
+            },
+            "custom_caption": {
+              "__TYPE__": "FieldContent",
+              "value": "strength",
+              "type": "Text"
+            },
+            "show_caption": {
+              "__TYPE__": "BooleanContent",
+              "value": true
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": []
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "about_text": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
       {
         "type": "paragraph",
-        "text": "Pariatur eu laboris aliqua sunt qui ea enim Lorem ullamco excepteur. Sit enim non dolor.",
-        "spans": []
+        "content": {
+          "text": "Est sunt duis do non fugiat occaecat ut. Esse labore aute aliquip veniam labore eu quis est qui pariatur exercitation veniam ipsum."
+        }
       }
-    ],
-    "client": [
+    ]
+  },
+  "client": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
       {
         "type": "paragraph",
-        "text": "Proident non culpa adipisicing non in. Enim tempor sunt minim sit tempor proident Lorem.",
-        "spans": []
+        "content": {
+          "text": "Magna dolore dolore minim est commodo cillum ullamco. Commodo incididunt in in exercitation dolore amet duis laborum id anim."
+        }
       }
-    ],
-    "date": "2013-09-09",
-    "more": [
+    ]
+  },
+  "date": {
+    "__TYPE__": "FieldContent",
+    "type": "Date",
+    "value": "2018-01-11"
+  },
+  "more": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
       {
         "type": "paragraph",
-        "text": "Cupidatat est velit ut commodo et ad enim magna elit dolore eu.",
-        "spans": []
+        "content": {
+          "text": "Do commodo sint ullamco ad est culpa do consectetur minim Lorem. Voluptate aliquip id id cupidatat deserunt reprehenderit adipisicing amet ut ad reprehenderit amet eu."
+        }
       }
-    ],
-    "slices1": []
+    ]
+  },
+  "slices1": {
+    "__TYPE__": "SliceContentType",
+    "value": []
   }
 }

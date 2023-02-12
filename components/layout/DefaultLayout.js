@@ -1,11 +1,13 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { Navigation, Footer } from "components";
 
 import styles from "./DefaultLayout.module.css";
 
 export default function DefaultLayout({ children }) {
+  const router = useRouter();
   return (
     <>
       <Head>
@@ -17,12 +19,16 @@ export default function DefaultLayout({ children }) {
         <Navigation>
           <li>
             <Link href="/about">
-              <a>about</a>
+              <a className={router.pathname.includes('about') ? "text-gray-400" : undefined}>
+                about
+              </a>
             </Link>
           </li>
           <li>
             <Link href="/projects">
-              <a>projects</a>
+              <a className={router.pathname.includes('projects') ? "text-gray-400" : undefined}>
+                projects
+              </a>
             </Link>
           </li>
         </Navigation>

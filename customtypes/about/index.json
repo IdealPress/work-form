@@ -26,9 +26,6 @@
           "choices": {
             "text_block": {
               "type": "SharedSlice"
-            },
-            "column_block": {
-              "type": "SharedSlice"
             }
           }
         }

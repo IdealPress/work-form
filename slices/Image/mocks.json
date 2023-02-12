@@ -1,0 +1,156 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {},
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "image",
+            {
+              "__TYPE__": "ImageContent",
+              "origin": {
+                "id": "main",
+                "url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8",
+                "width": 3456,
+                "height": 3456
+              },
+              "url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8",
+              "width": 3456,
+              "height": 3456,
+              "edit": {
+                "zoom": 1,
+                "crop": {
+                  "x": 0,
+                  "y": 0
+                },
+                "background": "transparent"
+              },
+              "thumbnails": {
+                "4:5": {
+                  "origin": {
+                    "id": "4:5",
+                    "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a",
+                    "width": 3024,
+                    "height": 3778
+                  },
+                  "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a?rect=1%2C0%2C3022%2C3778&w=2000&h=2500",
+                  "width": 2000,
+                  "height": 2500,
+                  "edit": {
+                    "zoom": 1,
+                    "crop": {
+                      "x": 1,
+                      "y": 0
+                    },
+                    "background": "transparent"
+                  }
+                },
+                "1:1": {
+                  "origin": {
+                    "id": "1:1",
+                    "url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8",
+                    "width": 3456,
+                    "height": 3456
+                  },
+                  "url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8?rect=0%2C0%2C3456%2C3456&w=2500&h=2500",
+                  "width": 2500,
+                  "height": 2500,
+                  "edit": {
+                    "zoom": 1,
+                    "crop": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "background": "transparent"
+                  }
+                },
+                "3:2": {
+                  "origin": {
+                    "id": "3:2",
+                    "url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e",
+                    "width": 6000,
+                    "height": 4000
+                  },
+                  "url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e?rect=1%2C0%2C5999%2C4000&w=2500&h=1667",
+                  "width": 2500,
+                  "height": 1667,
+                  "edit": {
+                    "zoom": 1,
+                    "crop": {
+                      "x": 1,
+                      "y": 0
+                    },
+                    "background": "transparent"
+                  }
+                },
+                "16:9": {
+                  "origin": {
+                    "id": "16:9",
+                    "url": "https://images.unsplash.com/photo-1600861194802-a2b11076bc51",
+                    "width": 2545,
+                    "height": 2545
+                  },
+                  "url": "https://images.unsplash.com/photo-1600861194802-a2b11076bc51?rect=0%2C557%2C2545%2C1431&w=2500&h=1406",
+                  "width": 2500,
+                  "height": 1406,
+                  "edit": {
+                    "zoom": 1,
+                    "crop": {
+                      "x": 0,
+                      "y": 557
+                    },
+                    "background": "transparent"
+                  }
+                }
+              }
+            }
+          ],
+          [
+            "ratio",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "main",
+              "type": "Select"
+            }
+          ],
+          [
+            "size",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "Small",
+              "type": "Select"
+            }
+          ],
+          [
+            "link",
+            {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "__TYPE__": "ExternalLink",
+                "url": "https://slicemachine.dev"
+              }
+            }
+          ],
+          [
+            "caption",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "fellow",
+              "type": "Text"
+            }
+          ],
+          [
+            "show_caption",
+            {
+              "__TYPE__": "BooleanContent",
+              "value": false
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]
