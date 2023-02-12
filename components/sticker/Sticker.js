@@ -25,7 +25,7 @@ export default function Sticker() {
     if(previousSize !== size.width) {
       setHideSticker(true)
     }
-  }, [size.width])
+  }, [previousSize, size.width])
 
   return (typeof window !== "undefined" && !hideSticker) && (
     <div 
@@ -37,7 +37,7 @@ export default function Sticker() {
         }
       }
     >
-      <img src={`/stickers/${stickerNumber}.png`} />
+      <img alt="sticker" src={`/stickers/${stickerNumber}.png`} />
     </div>
     
   );

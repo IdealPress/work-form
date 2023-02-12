@@ -78,7 +78,7 @@ export async function getStaticPaths() {
   const documents = await client.getAllByType("project");
   return {
     paths: documents.map((doc) => prismicH.asLink(doc, linkResolver)),
-    fallback: true,
+    fallback: false,
   };
 }
 
