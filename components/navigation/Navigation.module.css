@@ -1,5 +1,5 @@
 .base {
-  @apply flex p-6 md:p-8 text-xl lg:text-3xl justify-between items-center dark:bg-black sticky top-0 z-10;
+  @apply flex p-6 md:p-8 text-xl lg:text-3xl justify-between items-start dark:bg-black sticky top-0 z-10;
 }
 
 .base ul {

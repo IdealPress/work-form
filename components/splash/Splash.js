@@ -37,7 +37,7 @@ export default function Splash({ hide }) {
     useEffect(() => {
         const words = [text[0][generateRandomNumber(text[0])], text[1][generateRandomNumber(text[1])], text[2][generateRandomNumber(text[2])]]
         setStatement(`${words[0]}, ${words[1]} & the ${words[2]}`);
-    }, [text, timeElapsed])
+    }, [timeElapsed])
 
     return (
         <div className={styles.base} onClick={hide} >
