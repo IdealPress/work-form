@@ -22,12 +22,12 @@ const Project = ({ slice, context }) => {
               <figure>
                 <ImageWrapper item={item} /> 
                 <figcaption 
-                  className={`${item.link?.url && 'text-gray-400'} mt-2 leading-tight text-base md:text-lg`}
+                  className="leading-tight text-base md:text-lg"
                 >
                   {item.show_caption && (
                     <>
                       {item.caption ? (
-                        <p className="leading-snug text-base md:text-lg space-x-2">
+                        <p className="leading-snug text-base md:text-lg space-x-2 text-gray-400">
                           <span>{item.caption}</span>
                           {item.link?.url && (
                             <span className="inline-block">

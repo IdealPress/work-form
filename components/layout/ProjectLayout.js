@@ -31,7 +31,7 @@ export default function ProjectLayout({ title = "", children }) {
         <Head>
             <title>work-form | {title} </title>
             <meta name="description" content="work-form" />
-            <link rel="icon" href="/favicon.ico" />
+            <link rel="icon" href="/favicon.png" />
         </Head>
             <div className={styles.base}>
                 <Navigation title={title}>

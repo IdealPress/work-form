@@ -10,7 +10,7 @@ const Image = ({ slice, context }) => {
             <SizeWrapper size={item.size}>
               <figure>
                 <ImageWrapper item={item} /> 
-                <figcaption className="mt-2 leading-tight text-base md:text-lg">
+                <figcaption className="leading-tight text-base md:text-lg">
                   {item.show_caption && (
                     <>
                       {item.caption ? (
