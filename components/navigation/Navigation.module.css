@@ -3,7 +3,7 @@
 }
 
 .base ul {
-  @apply space-x-2.5 md:space-x-4 sm:space-x-4 text-right;
+  @apply space-x-2.5 sm:space-x-4 lg:space-x-6 text-right;
 }
 
 .base ul > li {

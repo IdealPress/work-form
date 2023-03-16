@@ -17,5 +17,8 @@ export { default as Splash } from "./splash/Splash.js";
 // Sticker
 export { default as Sticker } from "./sticker/Sticker.js";
 
+// SVG
+export { default as TopRightArrow } from "./svg/TopRightArrow.js";
+
 // Footer
 export { default as Footer } from "./footer/Footer.js";

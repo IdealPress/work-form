@@ -3,7 +3,7 @@ import { SizeWrapper, LinkWrapper, ImageWrapper } from 'components'
 
 const Image = ({ slice, context }) => {
   return (
-    <section className="md:flex items-center justify-center px-8 space-y-8 md:space-y-0">
+    <section className="md:flex items-center justify-center px-6 md:px-8 space-y-24 md:space-y-0">
       {slice.items.map((item, index) => (
         <div className="w-full" key={index}>
           <LinkWrapper url={item.link?.url}>

@@ -1,9 +1,9 @@
 import Link from "next/link"
 
-export default function LinkWrapper({url, children}) {
+export default function LinkWrapper({url, target, children}) {
     return url ? (
-        <Link href={url} target="_blank">
-            <a className="group focus:outline-none">
+        <Link href={url}>
+            <a className="group focus:outline-none" target={target}>
                 {children}
             </a>
         </Link>

@@ -3,7 +3,7 @@ import Vimeo from "@u-wave/react-vimeo";
 import { SizeWrapper } from 'components';
 
 const VideoBlock = ({ slice }) => (
-  <section className="px-8">
+  <section className="px-6 md:px-8">
     <SizeWrapper size={slice.primary.size}>
       <Vimeo
         video={slice.primary.vimeo_embed.embed_url}
@@ -13,6 +13,7 @@ const VideoBlock = ({ slice }) => (
         muted={true}
         controls={false}
         loop={true}
+        className="bg-gray-200"
       />
     </SizeWrapper>
   </section>

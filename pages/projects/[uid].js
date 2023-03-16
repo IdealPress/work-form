@@ -19,11 +19,11 @@ export default function Project({ content }) {
   const router = useRouter();
   return (
     <>
-      <main className="space-y-20 mt-8">
+      <main className="space-y-28 mt-4">
         {router.query.text ? (
           <>
             <section className="mx-6 md:mx-8 lg:w-3/5">
-              <div className="prose-lg max-w-[65ch]">
+              <div className="prose-xl max-w-[65ch]">
                 <PrismicRichText field={content.data.about_text} />
               </div>
             </section>

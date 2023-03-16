@@ -10,9 +10,9 @@ import styles from "./Splash.module.css"
 // Component
 export default function Splash({ hide }) {
     const text = [
-        [ 'People', 'Community', 'Crowds', 'Family', 'Public', 'Citizens', 'Plants', 'Cats', 'Friends', 'Culture', 'Detail', 'Typefaces', 'Tools', 'Robots', 'Dinosaurs', 'Learning', 'Pens', 'Dogs' ], 
-        [ 'Place', 'Area', 'Research', 'Experiments', 'Printing', 'Hangouts', 'Talking', 'Process', 'Collaboration', 'Mapping', 'Co-design', 'Production', 'History', 'Archives', 'Photography', 'Type', 'Making', 'Drawing' ],
-        [ 'Local', 'Park', 'Town', 'City', 'Village', 'Pub', 'Café', 'Shops', 'Supermarket', 'Studio', 'Workshop', 'Neighbourhood', 'Canteen', 'Corner', 'Field', 'Home', 'Playground', 'School' ]
+        [ 'people', 'community', 'crowds', 'family', 'public', 'citizens', 'plants', 'cats', 'friends', 'culture', 'detail', 'typefaces', 'tools', 'robots', 'dinosaurs', 'learning', 'pens', 'dogs' ], 
+        [ 'place', 'area', 'research', 'experiments', 'printing', 'hangouts', 'talking', 'process', 'collaboration', 'mapping', 'co-design', 'production', 'history', 'archives', 'photography', 'type', 'making', 'drawing' ],
+        [ 'local', 'park', 'town', 'city', 'village', 'pub', 'café', 'shops', 'supermarket', 'studio', 'workshop', 'neighbourhood', 'canteen', 'corner', 'field', 'home', 'playground', 'school' ]
     ]
     const [timeElapsed, setTimeElapsed] = useState(0);
     const [statement, setStatement] = useState('');
