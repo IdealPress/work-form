@@ -9,9 +9,7 @@ export default function ImageWrapper({ item }) {
 
   return item.ratio !== "main" ? (
     <Image
-      className={
-        `transition group-hover:blur-sm group-focus:blur-sm ${hasLoaded ? undefined : 'bg-gray-200'}`
-      }
+      className={hasLoaded ? undefined : 'bg-gray-200'}
       src={item.image[item.ratio]?.url}
       width={item.image[item.ratio]?.dimensions.width}
       height={item.image[item.ratio]?.dimensions.height}
@@ -20,9 +18,7 @@ export default function ImageWrapper({ item }) {
     />
   ) : (
     <Image
-    className={
-      `transition group-hover:blur-sm group-focus:blur-sm ${hasLoaded ? undefined : 'bg-gray-200'}`
-    }
+      className={hasLoaded ? undefined : 'bg-gray-200'}
       src={item.image?.url}
       width={item.image?.dimensions.width}
       height={item.image?.dimensions.height}

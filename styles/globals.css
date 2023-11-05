@@ -8,6 +8,12 @@
   }
 }
 
+@layer components {
+  .custom-blur:hover img {
+    @apply transition hover:blur-sm focus:blur-sm;
+  }
+}
+
 @font-face {
   font-family: "Circular Std";
   src: url("/CircularStd-Book.otf");
