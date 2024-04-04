@@ -7,6 +7,9 @@ export default function Footer() {
     <div className="flex flex-col md:flex-row md:h-60 p-8 md:space-x-12 space-y-6 md:space-y-0 md:mt-16">
       <div className="w-full md:w-1/3 lg:w-1/4 order-2 md:order-1">
         <p>For project enquires and portfolio requests please email studio at work-form.co.uk</p>
+        <br/>
+        <p>Company no. 15512298</p>
+        <p>VAT no. 462 0108 33</p>
       </div>
       <div className="w-full md:w-1/3 lg:w-1/5 order-3 md:order-2">
         <p>work-form</p>
