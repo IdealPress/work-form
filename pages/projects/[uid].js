@@ -23,7 +23,7 @@ export default function Project({ content }) {
         {router.query.text ? (
           <>
             <section className="mx-6 md:mx-8 lg:w-3/5">
-              <div className="prose-xl max-w-[65ch]">
+              <div className="prose-xl max-w-[65ch] leading-7 sm:leading-[unset]">
                 <PrismicRichText field={content.data.about_text} />
               </div>
             </section>
@@ -58,13 +58,13 @@ export default function Project({ content }) {
           </>
         ) : (
           <>
-          <Sticker key={router.asPath} />
-          {content?.data?.slices && (
-            <SliceZone slices={content?.data?.slices} components={components} context={content} />
-          )}
+            {content?.data?.slices && (
+              <SliceZone slices={content?.data?.slices} components={components} context={content} />
+            )}
           </>
         )}
       </main>
+      {!router.query.text && (<Sticker key={router.asPath} />)}
     </>
   );
 }

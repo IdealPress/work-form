@@ -8,7 +8,7 @@ import { components } from "slices";
 // Components
 import { DefaultLayout } from "components";
 
-export default function Home({ content }) {
+export default function About({ content }) {
   return (
     <main className="space-y-12">
       {content?.data?.slices && (
@@ -18,7 +18,7 @@ export default function Home({ content }) {
   );
 }
 
-Home.getLayout = function getLayout(page) {
+About.getLayout = function getLayout(page) {
   return <DefaultLayout>{page}</DefaultLayout>;
 };
 
