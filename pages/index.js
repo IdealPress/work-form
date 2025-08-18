@@ -13,10 +13,25 @@ export default function Home({ content }) {
   const [showSplash, setShowSplash] = useState(true);
   return (
     <>
-      {showSplash && <Splash text={['Robots, Production & the Workshop.', 'Culture, Vernacular & the Town', 'Education, Printing & the Park']} hide={() => {setShowSplash(false)}} />}
-      <main className="space-y-28 mt-4">
+      {showSplash && (
+        <Splash
+          text={[
+            "Robots, Production & the Workshop.",
+            "Culture, Vernacular & the Town",
+            "Education, Printing & the Park",
+          ]}
+          hide={() => {
+            setShowSplash(false);
+          }}
+        />
+      )}
+      <main className="space-y-36 mt-4">
         {content?.data?.slices && (
-          <SliceZone slices={content?.data?.slices} components={components} context={content} />
+          <SliceZone
+            slices={content?.data?.slices}
+            components={components}
+            context={content}
+          />
         )}
       </main>
     </>
@@ -58,11 +73,10 @@ const homeGraphQuery = `{
   }
 }`;
 
-
 export async function getStaticProps({ previewData }) {
   const client = createClient({ previewData });
   const content = await client.getSingle("home", {
-    graphQuery: homeGraphQuery
+    graphQuery: homeGraphQuery,
   });
   return {
     props: { content },

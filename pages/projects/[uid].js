@@ -1,4 +1,4 @@
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import * as prismicH from "@prismicio/helpers";
 import { PrismicRichText, SliceZone } from "@prismicio/react";
@@ -8,18 +8,18 @@ import { createClient, linkResolver } from "prismicio";
 import { ProjectLayout } from "components";
 import { components } from "slices";
 
-
-const Sticker = dynamic(() =>
-  import('../../components').then((mod) => mod.Sticker), {
+const Sticker = dynamic(
+  () => import("../../components").then((mod) => mod.Sticker),
+  {
     ssr: false,
   }
-)
+);
 
 export default function Project({ content }) {
   const router = useRouter();
   return (
     <>
-      <main className="space-y-28 mt-4">
+      <main className="space-y-36 mt-4">
         {router.query.text ? (
           <>
             <section className="mx-6 md:mx-8 lg:w-3/5">
@@ -44,7 +44,9 @@ export default function Project({ content }) {
                 <div>
                   <p className="text-xs">Year</p>
                   <p className="space-x-2">
-                    {new Date(content.data.date).toLocaleDateString('en-GB', {year: 'numeric'})}
+                    {new Date(content.data.date).toLocaleDateString("en-GB", {
+                      year: "numeric",
+                    })}
                   </p>
                 </div>
               )}
@@ -59,18 +61,24 @@ export default function Project({ content }) {
         ) : (
           <>
             {content?.data?.slices && (
-              <SliceZone slices={content?.data?.slices} components={components} context={content} />
+              <SliceZone
+                slices={content?.data?.slices}
+                components={components}
+                context={content}
+              />
             )}
           </>
         )}
       </main>
-      {!router.query.text && (<Sticker key={router.asPath} />)}
+      {!router.query.text && <Sticker key={router.asPath} />}
     </>
   );
 }
 
 Project.getLayout = function getLayout(page) {
-  return <ProjectLayout title={page.props.content.data.title}>{page}</ProjectLayout>;
+  return (
+    <ProjectLayout title={page.props.content.data.title}>{page}</ProjectLayout>
+  );
 };
 
 export async function getStaticPaths() {
