@@ -28,7 +28,7 @@ const Project = ({ slice, context }) => {
             <SizeWrapper size={item.size}>
               <figure className="group">
                 <ImageWrapper item={item} />
-                <figcaption className="md:group-hover:opacity-100 md:opacity-0 transition-opacity leading-tight text-base md:text-lg">
+                <figcaption className="md:group-hover:opacity-100 md:opacity-0 transition-opacity leading-tight text-base md:text-lg pt-1.5">
                   {item.show_caption && (
                     <>
                       {item.caption ? (
