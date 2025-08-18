@@ -5,21 +5,17 @@ import { ThemeToggle } from "components";
 
 import styles from "./Navigation.module.css";
 
-export default function Navigation({title = "", children = <li></li>}) {
+export default function Navigation({ title = "", children = <li></li> }) {
   const router = useRouter();
   return (
     <nav className={styles.base}>
       <div className="sm:w-4/12">
-        <Link href="/">
-          <a>work-form</a>
-        </Link>
+        <Link href="/">work-form</Link>
       </div>
       {title && (
         <div className="sm:w-5/12">
           {!router.query.text && (
-            <p className="hidden sm:block text-center">
-              {title}
-            </p>
+            <p className="hidden sm:block text-center">{title}</p>
           )}
         </div>
       )}

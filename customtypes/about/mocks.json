@@ -1,0 +1,45 @@
+[
+  {
+    "title": {
+      "__TYPE__": "FieldContent",
+      "value": "morning",
+      "type": "Text"
+    },
+    "uid": {
+      "__TYPE__": "UIDContent",
+      "value": "sometime"
+    },
+    "slices": {
+      "__TYPE__": "SliceContentType",
+      "value": [
+        {
+          "key": "text_block$26229921-ae5e-468d-94ee-818ca2f4d04e",
+          "name": "text_block",
+          "widget": {
+            "__TYPE__": "SharedSliceContent",
+            "variation": "default",
+            "primary": {
+              "text": {
+                "__TYPE__": "StructuredTextContent",
+                "value": [
+                  {
+                    "type": "paragraph",
+                    "content": {
+                      "text": "Officia eu ad do nostrud non culpa labore pariatur id eu proident. Consectetur consequat nostrud voluptate ullamco fugiat cupidatat. Ipsum eiusmod occaecat ut elit ad ipsum id id velit."
+                    }
+                  }
+                ]
+              }
+            },
+            "items": [
+              {
+                "__TYPE__": "GroupItemContent",
+                "value": []
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

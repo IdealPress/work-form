@@ -1,0 +1,261 @@
+[
+  {
+    "slices": {
+      "__TYPE__": "SliceContentType",
+      "value": [
+        {
+          "key": "text_block$875731e8-a395-43fb-953b-723d022d63d6",
+          "name": "text_block",
+          "widget": {
+            "__TYPE__": "SharedSliceContent",
+            "variation": "default",
+            "primary": {
+              "text": {
+                "__TYPE__": "StructuredTextContent",
+                "value": [
+                  {
+                    "type": "paragraph",
+                    "content": {
+                      "text": "Duis mollit culpa ea elit cillum."
+                    }
+                  }
+                ]
+              }
+            },
+            "items": [
+              {
+                "__TYPE__": "GroupItemContent",
+                "value": []
+              }
+            ]
+          }
+        },
+        {
+          "key": "project$a7f66d27-6fd5-44bc-9357-1a66679cd5be",
+          "name": "project",
+          "widget": {
+            "__TYPE__": "SharedSliceContent",
+            "variation": "default",
+            "primary": {},
+            "items": [
+              {
+                "__TYPE__": "GroupItemContent",
+                "value": [
+                  [
+                    "project",
+                    {
+                      "__TYPE__": "LinkContent",
+                      "value": {
+                        "__TYPE__": "DocumentLink",
+                        "id": "mock_document_id"
+                      }
+                    }
+                  ],
+                  [
+                    "image",
+                    {
+                      "__TYPE__": "ImageContent",
+                      "origin": {
+                        "id": "main",
+                        "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+                        "width": 3882,
+                        "height": 2584
+                      },
+                      "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+                      "width": 3882,
+                      "height": 2584,
+                      "edit": {
+                        "zoom": 1,
+                        "crop": {
+                          "x": 0,
+                          "y": 0
+                        },
+                        "background": "transparent"
+                      },
+                      "thumbnails": {
+                        "4:5": {
+                          "origin": {
+                            "id": "4:5",
+                            "url": "https://images.unsplash.com/photo-1587840171670-8b850147754e",
+                            "width": 4480,
+                            "height": 4480
+                          },
+                          "url": "https://images.unsplash.com/photo-1587840171670-8b850147754e?rect=448%2C0%2C3584%2C4480&w=2000&h=2500",
+                          "width": 2000,
+                          "height": 2500,
+                          "edit": {
+                            "zoom": 1,
+                            "crop": {
+                              "x": 448,
+                              "y": 0
+                            },
+                            "background": "transparent"
+                          }
+                        },
+                        "1:1": {
+                          "origin": {
+                            "id": "1:1",
+                            "url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e",
+                            "width": 6000,
+                            "height": 4000
+                          },
+                          "url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e?rect=1000%2C0%2C4000%2C4000&w=2500&h=2500",
+                          "width": 2500,
+                          "height": 2500,
+                          "edit": {
+                            "zoom": 1,
+                            "crop": {
+                              "x": 1000,
+                              "y": 0
+                            },
+                            "background": "transparent"
+                          }
+                        },
+                        "3:2": {
+                          "origin": {
+                            "id": "3:2",
+                            "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+                            "width": 3882,
+                            "height": 2584
+                          },
+                          "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?rect=3%2C0%2C3875%2C2584&w=2500&h=1667",
+                          "width": 2500,
+                          "height": 1667,
+                          "edit": {
+                            "zoom": 1,
+                            "crop": {
+                              "x": 3,
+                              "y": 0
+                            },
+                            "background": "transparent"
+                          }
+                        },
+                        "16:9": {
+                          "origin": {
+                            "id": "16:9",
+                            "url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+                            "width": 5243,
+                            "height": 3495
+                          },
+                          "url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?rect=0%2C273%2C5243%2C2949&w=2500&h=1406",
+                          "width": 2500,
+                          "height": 1406,
+                          "edit": {
+                            "zoom": 1,
+                            "crop": {
+                              "x": 0,
+                              "y": 273
+                            },
+                            "background": "transparent"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  [
+                    "ratio",
+                    {
+                      "__TYPE__": "FieldContent",
+                      "value": "16:9",
+                      "type": "Select"
+                    }
+                  ],
+                  [
+                    "size",
+                    {
+                      "__TYPE__": "FieldContent",
+                      "value": "Full",
+                      "type": "Select"
+                    }
+                  ],
+                  [
+                    "link",
+                    {
+                      "__TYPE__": "LinkContent",
+                      "value": {
+                        "__TYPE__": "ExternalLink",
+                        "url": "http://google.com"
+                      }
+                    }
+                  ],
+                  [
+                    "caption",
+                    {
+                      "__TYPE__": "FieldContent",
+                      "value": "stood",
+                      "type": "Text"
+                    }
+                  ],
+                  [
+                    "show_caption",
+                    {
+                      "__TYPE__": "BooleanContent",
+                      "value": false
+                    }
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "key": "video_block$2a180187-565c-4d04-b339-4bbe4d4735e0",
+          "name": "video_block",
+          "widget": {
+            "__TYPE__": "SharedSliceContent",
+            "variation": "default",
+            "primary": {
+              "vimeo_embed": {
+                "embed_url": "https://twitter.com/prismicio/status/1356293316158095361",
+                "author_name": "Prismic",
+                "author_url": "https://twitter.com/prismicio",
+                "html": "<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">Gatsby is a popular choice for Prismic users and we work hard on delivering a CMS that plays to its strengths.<br><br>But, what makes <a href=\"https://twitter.com/GatsbyJS?ref_src=twsrc%5Etfw\">@GatsbyJS</a> so popular?<br><br>Here are some of <a href=\"https://twitter.com/mxstbr?ref_src=twsrc%5Etfw\">@mxstbr</a>&#39;s thoughts on Gatsby&#39;s success and how they&#39;re improving developer experience.<a href=\"https://t.co/ZjCPvsWWUD\">https://t.co/ZjCPvsWWUD</a> <a href=\"https://t.co/EQqzJpeNKl\">pic.twitter.com/EQqzJpeNKl</a></p>&mdash; Prismic (@prismicio) <a href=\"https://twitter.com/prismicio/status/1356293316158095361?ref_src=twsrc%5Etfw\">February 1, 2021</a></blockquote>\n<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>\n",
+                "width": 550,
+                "height": null,
+                "type": "rich",
+                "cache_age": "3153600000",
+                "provider_name": "Twitter",
+                "provider_url": "http://www.twitter.com/",
+                "version": "1.0",
+                "all": {
+                  "embed_url": "https://twitter.com/prismicio/status/1356293316158095361",
+                  "author_name": "Prismic",
+                  "author_url": "https://twitter.com/prismicio",
+                  "html": "<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">Gatsby is a popular choice for Prismic users and we work hard on delivering a CMS that plays to its strengths.<br><br>But, what makes <a href=\"https://twitter.com/GatsbyJS?ref_src=twsrc%5Etfw\">@GatsbyJS</a> so popular?<br><br>Here are some of <a href=\"https://twitter.com/mxstbr?ref_src=twsrc%5Etfw\">@mxstbr</a>&#39;s thoughts on Gatsby&#39;s success and how they&#39;re improving developer experience.<a href=\"https://t.co/ZjCPvsWWUD\">https://t.co/ZjCPvsWWUD</a> <a href=\"https://t.co/EQqzJpeNKl\">pic.twitter.com/EQqzJpeNKl</a></p>&mdash; Prismic (@prismicio) <a href=\"https://twitter.com/prismicio/status/1356293316158095361?ref_src=twsrc%5Etfw\">February 1, 2021</a></blockquote>\n<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>\n",
+                  "width": 550,
+                  "height": null,
+                  "type": "rich",
+                  "cache_age": "3153600000",
+                  "provider_name": "Twitter",
+                  "provider_url": "http://www.twitter.com/",
+                  "version": "1.0"
+                },
+                "__TYPE__": "EmbedContent"
+              },
+              "size": {
+                "__TYPE__": "FieldContent",
+                "value": "Full",
+                "type": "Select"
+              },
+              "custom_caption": {
+                "__TYPE__": "FieldContent",
+                "value": "deep",
+                "type": "Text"
+              },
+              "show_caption": {
+                "__TYPE__": "BooleanContent",
+                "value": true
+              }
+            },
+            "items": [
+              {
+                "__TYPE__": "GroupItemContent",
+                "value": []
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

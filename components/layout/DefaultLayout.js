@@ -18,17 +18,25 @@ export default function DefaultLayout({ children }) {
       <div className={styles.base}>
         <Navigation>
           <li>
-            <Link href="/about">
-              <a className={router.pathname.includes('about') ? "text-gray-400" : undefined}>
-                about
-              </a>
+            <Link
+              href="/about"
+              className={
+                router.pathname.includes("about") ? "text-gray-400" : undefined
+              }
+            >
+              about
             </Link>
           </li>
           <li>
-            <Link href="/projects">
-              <a className={router.pathname.includes('projects') ? "text-gray-400" : undefined}>
-                projects
-              </a>
+            <Link
+              href="/projects"
+              className={
+                router.pathname.includes("projects")
+                  ? "text-gray-400"
+                  : undefined
+              }
+            >
+              projects
             </Link>
           </li>
         </Navigation>

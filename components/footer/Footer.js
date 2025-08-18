@@ -6,14 +6,17 @@ export default function Footer() {
   return (
     <div className="flex flex-col md:flex-row md:h-60 p-8 md:space-x-12 space-y-6 md:space-y-0 md:mt-16">
       <div className="w-full md:w-1/3 lg:w-1/4 order-2 md:order-1">
-        <p>For project enquires and portfolio requests please email studio at work-form.co.uk</p>
-        <br/>
+        <p>
+          For project enquires and portfolio requests please email studio at
+          work-form.co.uk
+        </p>
+        <br />
         <p>Company no. 15512298</p>
         <p>VAT no. 462 0108 33</p>
       </div>
       <div className="w-full md:w-1/3 lg:w-1/5 order-3 md:order-2">
         <p>work-form</p>
-        <p>Studio 6, Assembly Point Studios,</p> 
+        <p>Studio 6, Assembly Point Studios,</p>
         <p>47 Staffordshire Street,</p>
         <p>London</p>
         <p>SE15 5TJ</p>
@@ -21,22 +24,18 @@ export default function Footer() {
       <div className="w-full sm:w-1/3 md:w-1/5 order-4 md:order-3">
         <ul>
           <li>
-            <Link href="/">
-              <a>Home</a>
-            </Link>
+            <Link href="/">Home</Link>
           </li>
           <li>
-            <Link href="/about">
-              <a>About</a>
-            </Link>
+            <Link href="/about">About</Link>
           </li>
           <li>
-            <Link href="/projects">
-              <a>Projects</a>
-            </Link>
+            <Link href="/projects">Projects</Link>
           </li>
           <li>
-            <a href="https://www.instagram.com/workform/">Instagram</a>
+            <Link href="https://www.instagram.com/workform/" target="_blank">
+              Instagram
+            </Link>
           </li>
         </ul>
       </div>
@@ -44,7 +43,7 @@ export default function Footer() {
         <Lottie
           className="w-40 lg:-mt-6"
           animationData={workFormMascot}
-          loop={true} 
+          loop={true}
         />
       </div>
     </div>
