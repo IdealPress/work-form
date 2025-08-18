@@ -1,5 +1,5 @@
-import { exitPreview } from '@prismicio/next'
+import { exitPreview } from "@prismicio/next";
 
-export default async function exit(req, res) {
+export default async function handler(req, res) {
   await exitPreview({ res, req });
 }
