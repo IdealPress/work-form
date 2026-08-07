@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 import Vimeo from "@u-wave/react-vimeo";
-import { SizeWrapper } from 'components';
+import { SizeWrapper } from "components";
 
 const VideoBlock = ({ slice }) => (
-  <section className="px-6 md:px-8">
+  <section className="px-6">
     <SizeWrapper size={slice.primary.size}>
       <Vimeo
         video={slice.primary.vimeo_embed.embed_url}
@@ -17,6 +17,6 @@ const VideoBlock = ({ slice }) => (
       />
     </SizeWrapper>
   </section>
-)
+);
 
-export default VideoBlock
+export default VideoBlock;

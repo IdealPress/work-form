@@ -1,28 +1,57 @@
 @reference "../../styles/globals.css";
 
 .base {
-  @apply flex p-6 md:p-8 text-xl lg:text-3xl justify-between items-start dark:bg-black sticky top-0 z-10;
+  @apply sticky top-0 z-10 bg-white sm:pb-4 space-y-4 transition-transform duration-300 ease-out delay-0;
 }
 
-.base ul {
+.hidden {
+  @apply -translate-y-full delay-200;
+}
+.wrapper {
+  @apply flex px-6 pt-4 text-xl justify-between items-start;
+}
+.wrapper ul {
   @apply space-x-2.5 sm:space-x-4 lg:space-x-6 text-right;
 }
 
-.base ul > li {
+.wrapper ul > li {
   @apply inline-block;
 }
 
-.base a {
-  @apply hover:text-gray-400;
+.wrapper a {
+  @apply hover:text-grey;
 }
 
-.base button {
-  @apply hover:text-gray-400;
+.wrapper button {
+  @apply hover:text-grey;
 }
 
-/* md */
-@media not all and (min-width: 768px) { 
-  .toggle {
-    display: none !important;
+.lede {
+  @apply grid px-6 sm:-mt-3 md:-mt-4 text-xl bg-white text-grey;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 250ms ease-out 0ms;
+}
+
+.lede > p {
+  @apply overflow-hidden;
+  transition: opacity 200ms ease-out 250ms;
+}
+
+.ledeHidden {
+  @apply pointer-events-none;
+  grid-template-rows: 0fr;
+  transition-delay: 200ms;
+}
+
+.ledeHidden > p {
+  @apply opacity-0;
+  transition-delay: 0ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .base,
+  .lede,
+  .lede > p {
+    @apply transition-none delay-0;
   }
 }

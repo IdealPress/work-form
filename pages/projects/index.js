@@ -6,23 +6,23 @@ import { createClient } from "prismicio";
 export default function Projects({ content }) {
   return (
     <>
-      <main className="space-y-12 mx-6 md:mx-8 mt-4">
+      <main className="space-y-12 mx-6 mt-4">
         <section className="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-y-12 md:gap-x-10 md:gap-y-10 lg:gap-x-12 lg:gap-y-12">
           {content.map((project, index) => (
             <Link href={`/projects/${project.uid}`} key={index}>
               <div className="w-full h-full space-y-2">
-                <figure className="aspect-[3/2] group">
+                <figure className="aspect-3/2 group">
                   <Image
-                    className="transition duration-300 hover:blur-xs bg-gray-200"
+                    className="transition duration-300  bg-gray-200"
                     src={project?.data?.cover["3:2"]?.url}
                     width={project?.data?.cover["3:2"]?.dimensions?.width}
                     height={project?.data?.cover["3:2"]?.dimensions?.height}
                     alt={project?.data?.cover?.alt}
                   />
-                  <p className="mt-1 leading-snug md:text-lg group-focus:text-gray-400 group-hover:text-gray-400">
+                  <p className="mt-1 leading-snug md:text-lg group-focus:text-grey group-hover:text-grey">
                     {project?.data?.title}
                     {project?.tags?.map((tag, index) => (
-                      <span className="ml-2 text-gray-400" key={index}>
+                      <span className="ml-2 text-grey" key={index}>
                         {tag}
                       </span>
                     ))}

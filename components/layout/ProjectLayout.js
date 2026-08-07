@@ -43,9 +43,7 @@ export default function ProjectLayout({ title = "", children }) {
             <Link
               href="/projects"
               className={
-                router.pathname.includes("projects")
-                  ? "text-gray-400"
-                  : undefined
+                router.pathname.includes("projects") ? "text-grey" : undefined
               }
             >
               projects

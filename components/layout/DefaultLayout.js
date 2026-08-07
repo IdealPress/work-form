@@ -21,7 +21,7 @@ export default function DefaultLayout({ children }) {
             <Link
               href="/about"
               className={
-                router.pathname.includes("about") ? "text-gray-400" : undefined
+                router.pathname.includes("about") ? "text-grey" : undefined
               }
             >
               about
@@ -31,9 +31,7 @@ export default function DefaultLayout({ children }) {
             <Link
               href="/projects"
               className={
-                router.pathname.includes("projects")
-                  ? "text-gray-400"
-                  : undefined
+                router.pathname.includes("projects") ? "text-grey" : undefined
               }
             >
               projects

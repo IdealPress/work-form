@@ -10,7 +10,6 @@ export { default as RichText } from "./helpers/RichText.js";
 
 // Navigation
 export { default as Navigation } from "./navigation/Navigation.js";
-export { default as ThemeToggle } from "./navigation/ThemeToggle.js";
 
 // Splash
 export { default as Splash } from "./splash/Splash.js";

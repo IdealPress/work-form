@@ -12,7 +12,7 @@ const Sticker = dynamic(
   () => import("../../components").then((mod) => mod.Sticker),
   {
     ssr: false,
-  }
+  },
 );
 
 export default function Project({ content }) {
@@ -22,12 +22,12 @@ export default function Project({ content }) {
       <main className="space-y-36 mt-4">
         {router.query.text ? (
           <>
-            <section className="mx-6 md:mx-8 lg:w-3/5">
+            <section className="mx-6 lg:w-3/5">
               <div className="prose-xl max-w-[65ch] leading-7 sm:leading-[unset]">
                 <RichText field={content.data.about_text} />
               </div>
             </section>
-            <section className="mx-6 md:mx-8 lg:w-3/5 space-y-4">
+            <section className="mx-6 lg:w-3/5 space-y-4">
               <div>
                 <p className="text-xs">Client</p>
                 <RichText field={content.data.client} />
@@ -70,7 +70,6 @@ export default function Project({ content }) {
           </>
         )}
       </main>
-      {!router.query.text && <Sticker key={router.asPath} />}
     </>
   );
 }
