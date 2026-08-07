@@ -1,3 +1,5 @@
+@reference "../../styles/globals.css";
+
 .base {
     @apply min-h-screen;
   }

@@ -1,4 +1,4 @@
-import { setPreviewData, redirectToPreviewURL } from "@prismicio/next";
+import { setPreviewData, redirectToPreviewURL } from "@prismicio/next/pages";
 import { createClient } from "../../prismicio";
 
 export default async function handler(req, res) {

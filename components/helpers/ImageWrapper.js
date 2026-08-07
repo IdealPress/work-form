@@ -14,7 +14,7 @@ export default function ImageWrapper({ item }) {
       width={item.image[item.ratio]?.dimensions.width}
       height={item.image[item.ratio]?.dimensions.height}
       alt={item.image?.alt}
-      onLoadingComplete={() => setHasLoaded(true)}
+      onLoad={() => setHasLoaded(true)}
     />
   ) : (
     <Image
@@ -23,7 +23,7 @@ export default function ImageWrapper({ item }) {
       width={item.image?.dimensions.width}
       height={item.image?.dimensions.height}
       alt={item.image?.alt}
-      onLoadingComplete={() => setHasLoaded(true)}
+      onLoad={() => setHasLoaded(true)}
     />
   )
 }

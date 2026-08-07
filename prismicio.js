@@ -1,5 +1,5 @@
 import * as prismic from "@prismicio/client";
-import { enableAutoPreviews } from "@prismicio/next";
+import { enableAutoPreviews } from "@prismicio/next/pages";
 import sm from "./slicemachine.config.json";
 
 export const endpoint = sm.apiEndpoint;

@@ -1,6 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* Theme, typography overrides and content paths still live in tailwind.config.js. */
+@config "../tailwind.config.js";
+
+/* Tailwind v4 defines variants in CSS. Replaces `darkMode: "class"`. */
+@custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
   body {
@@ -10,8 +14,14 @@
 
 @layer components {
   .custom-blur:hover img {
-    @apply transition hover:blur-sm focus:blur-sm;
+    @apply transition hover:blur-xs focus:blur-xs;
   }
+}
+
+@font-face {
+  font-family: "Marfa";
+  src: url("/ABCMarfa-Regular.woff2") format("woff2");
+  font-display: swap;
 }
 
 @font-face {

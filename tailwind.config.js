@@ -11,40 +11,40 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Circular Std", ...defaultTheme.fontFamily.sans],
+        sans: ["Marfa", ...defaultTheme.fontFamily.sans],
       },
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            color: theme('colors.inherit'),
+            color: theme("colors.inherit"),
             a: {
-              'text-decoration': 'underline',
-              'text-underline-offset': '1px',
-              'text-decoration-thickness': '2px',
-              '&:hover': {
-                color: theme('colors.gray.300'),
-              }
-            }
+              "text-decoration": "underline",
+              "text-underline-offset": "1px",
+              "text-decoration-thickness": "2px",
+              "&:hover": {
+                color: theme("colors.gray.300"),
+              },
+            },
           },
         },
         lg: {
           css: {
             a: {
-              'text-decoration': 'underline',
-              'text-underline-offset': '1px',
-              'text-decoration-thickness': '2px',
-            }
-          }
+              "text-decoration": "underline",
+              "text-underline-offset": "1px",
+              "text-decoration-thickness": "2px",
+            },
+          },
         },
         xl: {
           css: {
             a: {
-              'text-decoration': 'underline',
-              'text-underline-offset': '1px',
-              'text-decoration-thickness': '2px',
-            }
-          }
-        }
+              "text-decoration": "underline",
+              "text-underline-offset": "1px",
+              "text-decoration-thickness": "2px",
+            },
+          },
+        },
       }),
     },
   },

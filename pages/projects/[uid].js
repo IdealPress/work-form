@@ -1,11 +1,11 @@
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import * as prismicH from "@prismicio/helpers";
-import { PrismicRichText, SliceZone } from "@prismicio/react";
+import * as prismic from "@prismicio/client";
+import { SliceZone } from "@prismicio/react";
 
 import { createClient, linkResolver } from "prismicio";
 
-import { ProjectLayout } from "components";
+import { ProjectLayout, RichText } from "components";
 import { components } from "slices";
 
 const Sticker = dynamic(
@@ -24,13 +24,13 @@ export default function Project({ content }) {
           <>
             <section className="mx-6 md:mx-8 lg:w-3/5">
               <div className="prose-xl max-w-[65ch] leading-7 sm:leading-[unset]">
-                <PrismicRichText field={content.data.about_text} />
+                <RichText field={content.data.about_text} />
               </div>
             </section>
             <section className="mx-6 md:mx-8 lg:w-3/5 space-y-4">
               <div>
                 <p className="text-xs">Client</p>
-                <PrismicRichText field={content.data.client} />
+                <RichText field={content.data.client} />
               </div>
               <div>
                 <p className="text-xs">Category</p>
@@ -53,7 +53,7 @@ export default function Project({ content }) {
               {content?.data?.more?.length > 0 && (
                 <div>
                   <p className="text-xs">More</p>
-                  <PrismicRichText field={content.data.more} />
+                  <RichText field={content.data.more} />
                 </div>
               )}
             </section>
@@ -85,7 +85,7 @@ export async function getStaticPaths() {
   const client = createClient();
   const documents = await client.getAllByType("project");
   return {
-    paths: documents.map((doc) => prismicH.asLink(doc, linkResolver)),
+    paths: documents.map((doc) => prismic.asLink(doc, { linkResolver })),
     fallback: false,
   };
 }

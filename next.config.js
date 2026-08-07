@@ -2,9 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["images.prismic.io", "images.unsplash.com"],
+    remotePatterns: [
+      { protocol: "https", hostname: "images.prismic.io" },
+      { protocol: "https", hostname: "images.unsplash.com" },
+    ],
   },
-  swcMinify: true,
   async redirects() {
     return [];
   },

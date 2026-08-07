@@ -13,7 +13,7 @@ export default function Projects({ content }) {
               <div className="w-full h-full space-y-2">
                 <figure className="aspect-[3/2] group">
                   <Image
-                    className="transition duration-300 hover:blur-sm bg-gray-200"
+                    className="transition duration-300 hover:blur-xs bg-gray-200"
                     src={project?.data?.cover["3:2"]?.url}
                     width={project?.data?.cover["3:2"]?.dimensions?.width}
                     height={project?.data?.cover["3:2"]?.dimensions?.height}

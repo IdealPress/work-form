@@ -1,3 +1,5 @@
+@reference "../../styles/globals.css";
+
 .base {
   @apply inline-flex relative items-center cursor-pointer;
 }

@@ -6,6 +6,7 @@ export { default as ProjectLayout } from "./layout/ProjectLayout.js";
 export { default as SizeWrapper } from "./helpers/SizeWrapper.js";
 export { default as LinkWrapper } from "./helpers/LinkWrapper.js";
 export { default as ImageWrapper } from "./helpers/ImageWrapper.js";
+export { default as RichText } from "./helpers/RichText.js";
 
 // Navigation
 export { default as Navigation } from "./navigation/Navigation.js";
