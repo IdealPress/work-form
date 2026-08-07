@@ -34,11 +34,24 @@ function useScroll() {
   return { hidden, atTop };
 }
 
-export default function Navigation({ title = "", children = <li></li> }) {
+const HOME_LEDE = (
+  <p>
+    Designing identities, books, websites and exhibitions for arts and culture
+  </p>
+);
+
+export default function Navigation({
+  title = "",
+  children = <li></li>,
+  lede = null,
+}) {
   const router = useRouter();
   const path = usePathname();
   const isHome = path === "/";
   const { hidden, atTop } = useScroll();
+
+  // Pages can supply their own lede; the home page falls back to the strapline.
+  const ledeContent = lede ?? (isHome ? HOME_LEDE : null);
 
   return (
     <>
@@ -58,15 +71,13 @@ export default function Navigation({ title = "", children = <li></li> }) {
             <ul>{children}</ul>
           </div>
         </div>
-        {isHome && (
+        {ledeContent && (
           <div
             className={`${styles.lede} ${atTop ? "" : styles.ledeHidden}`}
             aria-hidden={!atTop}
+            inert={!atTop}
           >
-            <p>
-              Designing identities, books, websites and exhibitions for arts and
-              culture
-            </p>
+            {ledeContent}
           </div>
         )}
       </nav>

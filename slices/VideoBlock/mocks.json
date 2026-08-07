@@ -3,6 +3,42 @@
     "__TYPE__": "SharedSliceContent",
     "variation": "default",
     "primary": {
+      "video_source": {
+        "__TYPE__": "FieldContent",
+        "value": "Gumlet",
+        "type": "Select"
+      },
+      "gumlet_url": {
+        "__TYPE__": "FieldContent",
+        "value": "https://video.gumlet.io/5f462c1561cf8a766464ffc4/635789f017629894d4d125a4/main.m3u8",
+        "type": "Text"
+      },
+      "gumlet_poster": {
+        "__TYPE__": "ImageContent",
+        "origin": {
+          "id": "main",
+          "url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8",
+          "width": 3456,
+          "height": 3456
+        },
+        "url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8",
+        "width": 3456,
+        "height": 3456,
+        "edit": {
+          "zoom": 1,
+          "crop": {
+            "x": 0,
+            "y": 0
+          },
+          "background": "transparent"
+        },
+        "thumbnails": {}
+      },
+      "gumlet_ratio": {
+        "__TYPE__": "FieldContent",
+        "value": "16:9",
+        "type": "Select"
+      },
       "vimeo_embed": {
         "embed_url": "https://twitter.com/prismicio/status/1354112310252630016",
         "author_name": "Prismic",

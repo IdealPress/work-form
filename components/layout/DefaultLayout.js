@@ -6,7 +6,7 @@ import { Navigation, Footer } from "components";
 
 import styles from "./DefaultLayout.module.css";
 
-export default function DefaultLayout({ children }) {
+export default function DefaultLayout({ children, lede = null }) {
   const router = useRouter();
   return (
     <>
@@ -16,7 +16,7 @@ export default function DefaultLayout({ children }) {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <div className={styles.base}>
-        <Navigation>
+        <Navigation lede={lede}>
           <li>
             <Link
               href="/about"

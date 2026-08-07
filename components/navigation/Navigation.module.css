@@ -32,7 +32,8 @@
   transition: grid-template-rows 250ms ease-out 0ms;
 }
 
-.lede > p {
+/* Direct child rather than `p`, so pages can slot in their own lede markup. */
+.lede > * {
   @apply overflow-hidden;
   transition: opacity 200ms ease-out 250ms;
 }
@@ -43,7 +44,7 @@
   transition-delay: 200ms;
 }
 
-.ledeHidden > p {
+.ledeHidden > * {
   @apply opacity-0;
   transition-delay: 0ms;
 }
@@ -51,7 +52,7 @@
 @media (prefers-reduced-motion: reduce) {
   .base,
   .lede,
-  .lede > p {
+  .lede > * {
     @apply transition-none delay-0;
   }
 }

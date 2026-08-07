@@ -11,11 +11,54 @@
       "version": "sktwi1xtmkfgx8626",
       "description": "VideoBlock",
       "primary": {
+        "video_source": {
+          "type": "Select",
+          "config": {
+            "label": "Video Source",
+            "placeholder": "",
+            "options": [
+              "Vimeo",
+              "Gumlet"
+            ],
+            "default_value": "Vimeo"
+          }
+        },
         "vimeo_embed": {
           "type": "Embed",
           "config": {
             "label": "Vimeo Embed",
             "placeholder": ""
+          }
+        },
+        "gumlet_url": {
+          "type": "Text",
+          "config": {
+            "label": "Gumlet Stream URL",
+            "placeholder": "https://video.gumlet.io/<collection-id>/<asset-id>/main.m3u8"
+          }
+        },
+        "gumlet_poster": {
+          "type": "Image",
+          "config": {
+            "label": "Gumlet Poster Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "gumlet_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Gumlet Aspect Ratio",
+            "placeholder": "",
+            "options": [
+              "16:9",
+              "4:5",
+              "1:1",
+              "3:2",
+              "21:9",
+              "Auto"
+            ],
+            "default_value": "16:9"
           }
         },
         "size": {

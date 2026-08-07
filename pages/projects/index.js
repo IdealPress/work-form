@@ -1,44 +1,47 @@
-import { DefaultLayout } from "components";
-import Image from "next/image";
-import Link from "next/link";
+import { useMemo } from "react";
+
+import {
+  DefaultLayout,
+  ProjectFilters,
+  ProjectGrid,
+  ProjectIndex,
+  DEFAULT_CATEGORY,
+  useProjectView,
+} from "components";
 import { createClient } from "prismicio";
 
-export default function Projects({ content }) {
+export default function Projects({ content, categories }) {
+  const { view, category } = useProjectView(categories);
+
+  const projects = useMemo(
+    () =>
+      category === DEFAULT_CATEGORY
+        ? content
+        : content.filter((project) => project?.tags?.includes(category)),
+    [content, category],
+  );
+
   return (
     <>
-      <main className="space-y-12 mx-6 mt-4">
-        <section className="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-y-12 md:gap-x-10 md:gap-y-10 lg:gap-x-12 lg:gap-y-12">
-          {content.map((project, index) => (
-            <Link href={`/projects/${project.uid}`} key={index}>
-              <div className="w-full h-full space-y-2">
-                <figure className="aspect-3/2 group">
-                  <Image
-                    className="transition duration-300  bg-gray-200"
-                    src={project?.data?.cover["3:2"]?.url}
-                    width={project?.data?.cover["3:2"]?.dimensions?.width}
-                    height={project?.data?.cover["3:2"]?.dimensions?.height}
-                    alt={project?.data?.cover?.alt}
-                  />
-                  <p className="mt-1 leading-snug md:text-lg group-focus:text-grey group-hover:text-grey">
-                    {project?.data?.title}
-                    {project?.tags?.map((tag, index) => (
-                      <span className="ml-2 text-grey" key={index}>
-                        {tag}
-                      </span>
-                    ))}
-                  </p>
-                </figure>
-              </div>
-            </Link>
-          ))}
-        </section>
+      <main className="mx-6 mt-4">
+        {view === "index" ? (
+          <ProjectIndex projects={projects} />
+        ) : (
+          <ProjectGrid projects={projects} />
+        )}
       </main>
     </>
   );
 }
 
+// The filters ride in the nav's lede slot, so they fade and collapse on scroll
+// the way the home page strapline does.
 Projects.getLayout = function getLayout(page) {
-  return <DefaultLayout>{page}</DefaultLayout>;
+  return (
+    <DefaultLayout lede={<ProjectFilters categories={page.props.categories} />}>
+      {page}
+    </DefaultLayout>
+  );
 };
 
 export async function getStaticProps({ previewData }) {
@@ -46,7 +49,14 @@ export async function getStaticProps({ previewData }) {
   const content = await client.getAllByType("project", {
     orderings: { field: "my.project.date", direction: "desc" },
   });
+
+  // Categories come from the tags actually in use, so adding a tag in Prismic
+  // is all it takes for a new filter to appear here.
+  const categories = [
+    ...new Set(content.flatMap((project) => project.tags ?? [])),
+  ].sort();
+
   return {
-    props: { content },
+    props: { content, categories },
   };
 }

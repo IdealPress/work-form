@@ -33,7 +33,7 @@ const Project = ({ slice, context }) => {
               >
                 <ImageWrapper item={item} />
               </LinkWrapper>
-              <figcaption className="md:peer-hover:opacity-100 md:opacity-0 transition-opacity leading-tight text-base md:text-lg pt-1.5">
+              <figcaption className="md:peer-hover:opacity-100 md:peer-focus:opacity-100 md:opacity-0 transition-opacity leading-tight text-base md:text-lg pt-1.5">
                 {item.show_caption && (
                   <>
                     {item.caption ? (

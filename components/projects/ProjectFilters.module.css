@@ -1,0 +1,30 @@
+@reference "../../styles/globals.css";
+
+.base {
+  @apply flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 text-base md:mt-2;
+}
+
+.filters,
+.views {
+  @apply flex flex-wrap gap-x-3;
+}
+
+.views {
+  @apply md:ml-auto;
+}
+
+.base li {
+  @apply inline-block;
+}
+
+/*
+ * Sits in the nav's lede slot, which is grey — so only the active item needs a
+ * colour of its own.
+ */
+.base a {
+  @apply hover:text-black;
+}
+
+.active {
+  @apply text-black;
+}

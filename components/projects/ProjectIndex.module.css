@@ -1,0 +1,44 @@
+@reference "../../styles/globals.css";
+
+.base {
+  @apply w-full text-lg md:text-xl;
+}
+
+/*
+ * Two columns on small screens (year, then the project with its type and client
+ * stacked beneath it), opening out into the full four-column index at md.
+ */
+.head,
+.link {
+  @apply grid grid-cols-[4rem_1fr] md:grid-cols-[6rem_2fr_1.5fr_1.5fr] gap-x-4 gap-y-0.5 py-3;
+}
+
+.head {
+  @apply hidden md:grid text-grey border-b border-gray-200;
+}
+
+/* The head supplies the rule above the first row, so it is only needed at md-. */
+.base ul {
+  @apply border-t border-gray-200 md:border-t-0;
+}
+
+.row {
+  @apply border-b border-gray-200;
+}
+
+.link {
+  @apply hover:text-grey;
+}
+
+.year {
+  @apply row-span-3 md:row-span-1;
+}
+
+.title {
+  @apply leading-snug;
+}
+
+.type,
+.client {
+  @apply text-grey md:text-inherit;
+}

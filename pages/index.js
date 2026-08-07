@@ -55,6 +55,15 @@ const homeGraphQuery = `{
           }
         }
       }
+      ...on video_block {
+        variation {
+          ...on default {
+            primary {
+              ...primaryFields
+            }
+          }
+        }
+      }
       ...on project {
         variation {
           ...on default {
