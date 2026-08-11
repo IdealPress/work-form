@@ -19,6 +19,44 @@
   .custom-blur:hover img {
     @apply transition  focus:blur-xs;
   }
+
+  /*
+   * Scroll reveal. Elements start blurred and transparent and resolve once
+   * they're in view — see the `useReveal` hook, which adds `reveal-in`.
+   * Source order matters here: both rules have equal specificity.
+   */
+  .reveal {
+    @apply opacity-0 blur-[10px];
+    transition:
+      opacity 700ms ease-out,
+      filter 700ms ease-out;
+    will-change: opacity, filter;
+  }
+
+  /* An explicit blur(0) rather than `blur-none`: the latter empties Tailwind's
+     filter variable, leaving `filter` to resolve to `none` and the transition
+     to rely on implicit interpolation. */
+  .reveal-in {
+    @apply opacity-100 blur-[0px];
+    will-change: auto;
+  }
+
+  /*
+   * Falls in behind the nav title, which fades at 300ms — so a page arrives as
+   * nav, then title, then its first screenful. Only applied to images already
+   * on screen at load; anything scrolled to reveals without a delay, which
+   * would otherwise read as lag. Must follow `.reveal`, whose `transition`
+   * shorthand resets the delay.
+   */
+  .reveal-delayed {
+    transition-delay: 500ms;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      @apply opacity-100 blur-none transition-none;
+    }
+  }
 }
 
 /*

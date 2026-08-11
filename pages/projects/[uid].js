@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import * as prismic from "@prismicio/client";
 import { SliceZone } from "@prismicio/react";
@@ -7,13 +6,6 @@ import { createClient, linkResolver } from "prismicio";
 
 import { ProjectLayout, RichText } from "components";
 import { components } from "slices";
-
-const Sticker = dynamic(
-  () => import("../../components").then((mod) => mod.Sticker),
-  {
-    ssr: false,
-  },
-);
 
 export default function Project({ content }) {
   const router = useRouter();

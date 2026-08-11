@@ -1,30 +1,30 @@
-import Image from "next/image"
+import Image from "next/image";
 import { useState } from "react";
 
-import { useRandomColor } from "lib";
+import { useReveal } from "lib";
 
 export default function ImageWrapper({ item }) {
+  const [ref, inView, initiallyVisible] = useReveal();
+  const [hasLoaded, setHasLoaded] = useState(false);
 
-  const [hasLoaded, setHasLoaded] = useState(false)
+  // Named crops sit alongside the original under the image field; `main` is the
+  // uncropped image itself.
+  const source = item.ratio !== "main" ? item.image?.[item.ratio] : item.image;
 
-  return item.ratio !== "main" ? (
+  // Wait for both, so we never fade in a half-decoded image or an empty box.
+  const revealed = inView && hasLoaded;
+
+  return (
     <Image
-      className={hasLoaded ? undefined : 'bg-gray-200'}
-      src={item.image[item.ratio]?.url}
-      width={item.image[item.ratio]?.dimensions.width}
-      height={item.image[item.ratio]?.dimensions.height}
+      ref={ref}
+      className={`reveal ${revealed ? "reveal-in" : ""} ${
+        initiallyVisible ? "reveal-delayed" : ""
+      } ${hasLoaded ? "" : "bg-gray-200"}`}
+      src={source?.url}
+      width={source?.dimensions.width}
+      height={source?.dimensions.height}
       alt={item.image?.alt}
       onLoad={() => setHasLoaded(true)}
     />
-  ) : (
-    <Image
-      className={hasLoaded ? undefined : 'bg-gray-200'}
-      src={item.image?.url}
-      width={item.image?.dimensions.width}
-      height={item.image?.dimensions.height}
-      alt={item.image?.alt}
-      onLoad={() => setHasLoaded(true)}
-    />
-  )
+  );
 }
-  

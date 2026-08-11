@@ -7,6 +7,13 @@
 .hidden {
   @apply -translate-y-full delay-200;
 }
+
+/* The starting position for a nav arriving on a page we reached with it
+   scrolled away. Same slide as `.hidden` but without its delay, so it drops
+   into place as soon as the page does. */
+.entering {
+  @apply -translate-y-full;
+}
 .wrapper {
   @apply flex px-6 pt-4 text-xl justify-between items-start;
 }
@@ -49,10 +56,32 @@
   transition-delay: 0ms;
 }
 
+/* Page title. Opacity only — a blur like the images use would leave text
+   looking mis-rendered rather than resolving. */
+.title {
+  @apply opacity-0;
+  transition: opacity 500ms ease-out;
+  transition-delay: 300ms;
+}
+
+.titleVisible {
+  @apply opacity-100;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .base,
   .lede,
   .lede > * {
     @apply transition-none delay-0;
+  }
+
+  /* Without a transition the entrance would flash the nav up and back, so skip
+     the offset entirely and let it arrive in place. */
+  .entering {
+    @apply translate-y-0;
+  }
+
+  .title {
+    @apply opacity-100 transition-none;
   }
 }
