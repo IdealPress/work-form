@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 
+import { cappedWidth } from "lib";
+
 // Don't ask canPlayType() whether HLS is playable: desktop Chrome answers
 // "maybe" for application/vnd.apple.mpegurl and then fails with a
 // MEDIA_ERR_SRC_NOT_SUPPORTED. Media Source Extensions decide instead — hls.js
@@ -21,10 +23,19 @@ const toAspectRatio = (ratio) => {
   return ratio.replace(":", " / ");
 };
 
+// The screen-height cap, which a video obeys through its width like everything
+// else. "Auto" has no shape to work from and goes uncapped.
+const toMaxWidth = (ratio) => {
+  const [width, height] = (toAspectRatio(ratio) ?? "").split(" / ").map(Number);
+  return cappedWidth(width / height);
+};
+
 export default function StreamPlayer({
   src,
   poster,
   ratio,
+  fit = "cover",
+  cap = true,
   className = "",
   autoPlay = true,
   muted = true,
@@ -94,8 +105,30 @@ export default function StreamPlayer({
 
   if (!src) return null;
 
+  // A video only fills a box it shares a shape with. `contain` is for the ones
+  // that don't — a portrait recording framed to a landscape ratio so it keeps a
+  // row even — and the bars it leaves have to be some colour, so the box itself
+  // is black and the video sits on it. The poster is painted with the same
+  // object-fit as the video, so it's framed identically and nothing shifts the
+  // moment the first frame lands.
+  const contain = fit === "contain";
+
+  const classes = [
+    "w-full h-full",
+    contain ? "object-contain" : "object-cover",
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <div style={{ aspectRatio: toAspectRatio(ratio) }}>
+    <div
+      className={`mx-auto${contain ? " bg-black" : ""}`}
+      style={{
+        aspectRatio: toAspectRatio(ratio),
+        maxWidth: cap ? toMaxWidth(ratio) : undefined,
+      }}
+    >
       <video
         ref={videoRef}
         poster={poster}
@@ -105,7 +138,7 @@ export default function StreamPlayer({
         controls={controls}
         playsInline
         preload="metadata"
-        className={`w-full h-full object-cover ${className}`}
+        className={classes}
       />
     </div>
   );

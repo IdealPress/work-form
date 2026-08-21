@@ -23,7 +23,7 @@ export default function Projects({ content, categories }) {
 
   return (
     <>
-      <main className="mx-6 mt-4">
+      <main className="mx-gutter mt-4">
         {view === "index" ? (
           <ProjectIndex projects={projects} />
         ) : (

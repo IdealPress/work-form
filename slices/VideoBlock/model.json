@@ -54,6 +54,8 @@
               "16:9",
               "4:5",
               "1:1",
+              "5:4",
+              "4:3",
               "3:2",
               "21:9",
               "Auto"
@@ -68,10 +70,21 @@
             "placeholder": "",
             "options": [
               "Full",
-              "Medium",
-              "Small"
+              "Regular"
             ],
             "default_value": "Full"
+          }
+        },
+        "background": {
+          "type": "Select",
+          "config": {
+            "label": "Background",
+            "placeholder": "",
+            "options": [
+              "None",
+              "Black"
+            ],
+            "default_value": "None"
           }
         },
         "custom_caption": {

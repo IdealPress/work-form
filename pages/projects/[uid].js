@@ -11,7 +11,7 @@ export default function Project({ content }) {
   const router = useRouter();
   return (
     <>
-      <main className="space-y-36 mt-4">
+      <main className="slice-stack mt-4">
         {router.query.text ? (
           <>
             <section className="mx-6 lg:w-3/5">

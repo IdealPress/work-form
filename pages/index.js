@@ -7,7 +7,7 @@ import { createClient } from "prismicio";
 import { components } from "slices";
 
 // Components
-import { DefaultLayout, Splash } from "components";
+import { DefaultLayout, NewsletterBar, Splash } from "components";
 
 export default function Home({ content }) {
   const [showSplash, setShowSplash] = useState(true);
@@ -25,7 +25,7 @@ export default function Home({ content }) {
           }}
         />
       )}
-      <main className="space-y-36 mt-4">
+      <main className="slice-stack mt-4">
         {content?.data?.slices && (
           <SliceZone
             slices={content?.data?.slices}
@@ -34,6 +34,7 @@ export default function Home({ content }) {
           />
         )}
       </main>
+      <NewsletterBar content={content} />
     </>
   );
 }

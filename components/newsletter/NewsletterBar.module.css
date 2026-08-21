@@ -1,0 +1,26 @@
+@reference "../../styles/globals.css";
+
+/*
+ * Sits outside `main`, so it carries the gap the slice stack would otherwise
+ * have given it and reads as one more step in the page's rhythm.
+ */
+.base {
+  @apply w-full mt-gutter md:mt-36 bg-black text-white;
+}
+
+/*
+ * Full bleed bar, gutter-inset contents — the message and the button line up
+ * with every other page edge. A phone drops the button onto its own line
+ * rather than squeezing the message into two or three.
+ */
+.row {
+  @apply flex flex-col items-start gap-4 px-gutter py-6 sm:flex-row sm:items-center sm:justify-between sm:gap-gutter;
+}
+
+.message {
+  @apply text-lg md:text-xl leading-snug;
+}
+
+.button {
+  @apply shrink-0 inline-block px-6 py-1 bg-white text-black text-lg md:text-xl leading-snug transition-colors hover:text-grey;
+}

@@ -21,6 +21,29 @@
             }
           }
         }
+      },
+      "newsletter_text": {
+        "type": "Text",
+        "config": {
+          "label": "Newsletter Text",
+          "placeholder": "We have a newsletter! Sign up for occasional updates (if you like)"
+        }
+      },
+      "newsletter_label": {
+        "type": "Text",
+        "config": {
+          "label": "Newsletter Button Label",
+          "placeholder": "subscribe"
+        }
+      },
+      "newsletter_link": {
+        "type": "Link",
+        "config": {
+          "label": "Newsletter Link",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "select": null
+        }
       }
     }
   }

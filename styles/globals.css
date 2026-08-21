@@ -7,6 +7,24 @@
     "Helvetica Neue", "Noto Sans", Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --color-grey: #808080;
+
+  /*
+   * One gutter for the whole site: the margin at the page edge, and the gap
+   * between images sitting in a row. Images are meant to read large, so this is
+   * the only horizontal space between them.
+   */
+  --spacing-gutter: 1.5rem;
+
+  /*
+   * No picture is taller than the screen it is being read on — a portrait crop
+   * at full width would otherwise run to two or three screenfuls and have to be
+   * scrolled rather than looked at. The subtraction keeps the nav and the
+   * caption in view, so an image and the words under it arrive together.
+   *
+   * `svh` is the viewport with the phone's toolbars showing, which is the one
+   * measurement that is never briefly wrong as they slide away.
+   */
+  --image-height: calc(100svh - 8rem);
 }
 
 @layer base {
@@ -33,6 +51,13 @@
     will-change: opacity, filter;
   }
 
+  /* Text at size looks mis-rendered rather than resolving when it comes out of
+     a blur, so a single line fades instead. Small type set in blocks — an index
+     row — keeps the blur, which reads as the row arriving. */
+  .reveal-fade {
+    @apply blur-none;
+  }
+
   /* An explicit blur(0) rather than `blur-none`: the latter empties Tailwind's
      filter variable, leaving `filter` to resolve to `none` and the transition
      to rely on implicit interpolation. */
@@ -50,6 +75,33 @@
    */
   .reveal-delayed {
     transition-delay: 500ms;
+  }
+
+  /*
+   * An image and its caption travel together. The cap is set on the figure
+   * rather than on the picture inside it — a figure is an ordinary block in a
+   * column of known width, so the cap and the centring both resolve without
+   * anything having to be measured, and the caption is narrowed along with the
+   * picture it belongs to instead of staying out at the column's edge.
+   *
+   * The width itself comes from `imageCap`, and is left off entirely for
+   * full-width images, which are meant to fill their column whatever shape they
+   * are.
+   */
+  .image-figure {
+    @apply mx-auto;
+  }
+
+  /*
+   * The vertical rhythm between slices, in one place. A phone is a single
+   * column whatever the slices underneath it are doing, and a reader can't see
+   * where one ends and the next begins — so the gap between two images in the
+   * same slice and the gap between slices are the same gutter, and the page
+   * reads as one evenly spaced stream. Desktop keeps a much larger step, where
+   * rows are visibly rows and the space is what separates them.
+   */
+  .slice-stack {
+    @apply space-y-gutter md:space-y-36;
   }
 
   @media (prefers-reduced-motion: reduce) {

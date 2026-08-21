@@ -1,20 +1,55 @@
 @reference "../../styles/globals.css";
 
 .base {
-  @apply flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 text-base md:mt-2;
+  @apply flex items-baseline justify-between gap-x-6 text-base md:mt-2;
 }
 
-.filters,
+/*
+ * The lede clips its child so it can collapse on scroll, which would take the
+ * open panel with it — so the clip is lifted only while the panel is open, and
+ * the panel closes the moment the page leaves the top.
+ */
+.base.open {
+  @apply overflow-visible;
+}
+
+.dropdown {
+  @apply relative md:min-w-0;
+}
+
+/*
+ * The button is a phone's affordance only: at md every category fits on one
+ * line and the list stands open permanently, so there is nothing to press.
+ *
+ * Closed, the box is only as wide as the word. Open, it takes the width the
+ * panel needs — "public realm" is the longest category the CMS offers — so the
+ * two read as one rectangle rather than a box with a wider box under it.
+ */
+.toggle {
+  @apply block border border-gray-200 px-2 py-1 text-left hover:text-black md:hidden;
+}
+
+.toggleOpen {
+  @apply w-32 border-b-transparent;
+}
+
+/*
+ * A panel hanging off the button on a phone, and a plain row of categories at
+ * md — where it loses its border and its position and simply sits in the line,
+ * the way it always did.
+ */
+.options {
+  @apply absolute left-0 top-full z-10 hidden w-32 border border-t-0 border-gray-200 bg-white px-2 pb-1;
+  @apply md:static md:z-auto md:flex md:w-auto md:flex-wrap md:gap-x-3 md:border-0 md:bg-transparent md:p-0;
+}
+
+/* Only ever set on a phone, so md keeps the row it is given above. */
+.optionsOpen {
+  @apply block md:flex;
+}
+
 .views {
-  @apply flex flex-wrap gap-x-3;
-}
-
-.views {
-  @apply md:ml-auto;
-}
-
-.base li {
-  @apply inline-block;
+  @apply flex shrink-0 gap-x-3;
 }
 
 /*

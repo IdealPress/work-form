@@ -1,6 +1,8 @@
 import Link from "next/link";
 import * as prismic from "@prismicio/client";
 
+import { Reveal } from "components";
+
 import styles from "./ProjectIndex.module.css";
 
 function year(date) {
@@ -23,14 +25,14 @@ export default function ProjectIndex({ projects = [] }) {
   return (
     <div className={styles.base}>
       <div className={styles.head} aria-hidden="true">
-        <p>Year</p>
+        <p className={styles.year}>Year</p>
         <p>Project</p>
         <p className={styles.type}>Type</p>
         <p className={styles.client}>Client</p>
       </div>
       <ul>
         {projects.map((project) => (
-          <li key={project.id} className={styles.row}>
+          <Reveal as="li" key={project.id} className={styles.row}>
             <Link href={`/projects/${project.uid}`} className={styles.link}>
               <span className={styles.year}>{year(project?.data?.date)}</span>
               <span className={styles.title}>{project?.data?.title}</span>
@@ -39,7 +41,7 @@ export default function ProjectIndex({ projects = [] }) {
                 {client(project?.data?.client)}
               </span>
             </Link>
-          </li>
+          </Reveal>
         ))}
       </ul>
     </div>

@@ -5,21 +5,17 @@
 }
 
 /*
- * Two columns on small screens (year, then the project with its type and client
- * stacked beneath it), opening out into the full four-column index at md.
+ * A phone gets the two columns worth reading — the project and what it is —
+ * opening out into the full four-column index at md.
  */
 .head,
 .link {
-  @apply grid grid-cols-[4rem_1fr] md:grid-cols-[6rem_2fr_1.5fr_1.5fr] gap-x-4 gap-y-0.5 py-3;
+  @apply grid grid-cols-[2fr_1fr] md:grid-cols-[6rem_2fr_1.5fr_1.5fr] gap-x-4 py-3;
 }
 
+/* The head supplies the rule above the first row. */
 .head {
-  @apply hidden md:grid text-grey border-b border-gray-200;
-}
-
-/* The head supplies the rule above the first row, so it is only needed at md-. */
-.base ul {
-  @apply border-t border-gray-200 md:border-t-0;
+  @apply text-grey border-b border-gray-200;
 }
 
 .row {
@@ -30,15 +26,20 @@
   @apply hover:text-grey;
 }
 
-.year {
-  @apply row-span-3 md:row-span-1;
+/*
+ * Hidden rather than dropped, so one row of markup serves both layouts. Grid
+ * placement follows suit: with these two out, a phone is left with exactly the
+ * project and its type.
+ */
+.year,
+.client {
+  @apply hidden md:block;
 }
 
 .title {
   @apply leading-snug;
 }
 
-.type,
-.client {
+.type {
   @apply text-grey md:text-inherit;
 }
