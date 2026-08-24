@@ -9,6 +9,15 @@
   --color-grey: #808080;
 
   /*
+   * The site's black. Not #000: a true black against the white page reads as a
+   * harder edge than the type and the images want, and #222 keeps the contrast
+   * while letting the page sit. Overriding Tailwind's own `--color-black` means
+   * every `text-black` / `bg-black` / `selection:bg-black` already written
+   * follows, rather than the value being repeated at each call site.
+   */
+  --color-black: #222222;
+
+  /*
    * One gutter for the whole site: the margin at the page edge, and the gap
    * between images sitting in a row. Images are meant to read large, so this is
    * the only horizontal space between them.
@@ -90,6 +99,22 @@
    */
   .image-figure {
     @apply mx-auto;
+  }
+
+  /*
+   * The optional drop shadow an editor can switch on per image. Two layers: a
+   * tight one that reads as the picture's own edge lifting off the page, and a
+   * wide, soft one that carries the weight. Both are cast straight down rather
+   * than off to one side, so a page of shadowed images doesn't imply a light
+   * source the photographs themselves don't share.
+   *
+   * Tuned against the white page — deep enough to lift a pale image, shallow
+   * enough that it never reads as a border.
+   */
+  .image-shadow {
+    box-shadow:
+      0 0.125rem 0.375rem rgb(0 0 0 / 0.08),
+      0 1rem 2.5rem -0.75rem rgb(0 0 0 / 0.22);
   }
 
   /*

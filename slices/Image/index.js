@@ -32,6 +32,16 @@ const Image = ({ slice, context }) => {
   const carousel = slice.primary.carousel && slice.items.length > 1;
 
   /*
+   * Two ways to move a carousel on. Left alone it plays itself once it is
+   * scrolled to; "Progress on hover" hands that to the reader instead, for the
+   * sets where the point is comparing one frame against the next rather than
+   * watching them go by. Hover is a pointer's move, so on a touch screen such a
+   * carousel simply holds on its first frame — which is the same first frame
+   * the editor chose to lead with.
+   */
+  const trigger = slice.primary.carousel_hover ? "hover" : "auto";
+
+  /*
    * A carousel is one image's worth of furniture with the rest of the items
    * cycling inside it, so it renders from the first item alone: that item's
    * ratio, size, caption and link stand for the whole thing, and the editor
@@ -59,7 +69,11 @@ const Image = ({ slice, context }) => {
                     ratio={item.ratio}
                     sizes={rowSizes(1, item.size)}
                     alt={item.image?.alt ?? ""}
-                    trigger="auto"
+                    shadow={item.shadow}
+                    trigger={trigger}
+                    // A carousel keeps its place when the pointer leaves or it
+                    // scrolls away; only a grid card starts its preview over.
+                    resetOnStop={false}
                     cap={false}
                   />
                 ) : (

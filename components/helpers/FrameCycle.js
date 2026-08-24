@@ -1,6 +1,13 @@
 import { useState } from "react";
 
-import { useInterval, pickCrop, cappedWidth, ASPECT_CLASS, RATIOS } from "lib";
+import {
+  useInterval,
+  useInView,
+  pickCrop,
+  cappedWidth,
+  ASPECT_CLASS,
+  RATIOS,
+} from "lib";
 import ImageWrapper from "./ImageWrapper";
 
 // How long each frame holds before the next one cuts in.
@@ -10,7 +17,11 @@ export const CYCLE_MS = 900;
 // visit the project, and a lot of bytes for a hover.
 const MAX_FRAMES = 8;
 
+// Asked on every render now that the cycle is derived rather than switched on,
+// so it also has to survive the server, where there is no one to ask and
+// nothing moving to ask about.
 const canAnimate = () =>
+  typeof window === "undefined" ||
   typeof window.matchMedia !== "function" ||
   !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -32,6 +43,17 @@ const canHover = () =>
  * rather than all at once, and everything reached stays mounted: leaving and
  * returning to a card is instant.
  *
+ * `trigger` is what moves the cycle on: "hover" runs it while a pointer is over
+ * the box, "auto" while the box is in view. Both are conditions rather than
+ * events — a carousel scrolled past stops where it is and carries on from that
+ * frame when it comes back, because frames spent off screen are frames nobody
+ * sees.
+ *
+ * `resetOnStop` is the difference between the two things a stopped hover can
+ * mean. A grid card is a pitch for a project and starts it over each time you
+ * come back; a carousel is the picture itself, and snapping to the first frame
+ * as the pointer leaves would throw away the reader's place in it.
+ *
  * `frames` are Prismic image fields; each is cropped to `ratio`, so every frame
  * fills the same box.
  */
@@ -42,14 +64,34 @@ export default function FrameCycle({
   alt = "",
   interval = CYCLE_MS,
   trigger = "hover",
+  resetOnStop = true,
   cap = true,
+  shadow = false,
   className = "",
 }) {
   const images = frames.filter((frame) => frame?.url).slice(0, MAX_FRAMES);
 
   const [index, setIndex] = useState(0);
-  const [cycling, setCycling] = useState(false);
+  const [hovering, setHovering] = useState(false);
   const [reach, setReach] = useState(0);
+  const [landed, setLanded] = useState(false);
+
+  const hover = trigger === "hover";
+  const auto = trigger === "auto";
+
+  const [viewRef, inView] = useInView();
+
+  // Whether the cycle should be running, rather than a flag something has to
+  // remember to switch off: a carousel that scrolls away simply stops meeting
+  // the condition, and meets it again on the way back.
+  //
+  // Being in view isn't enough on its own to start an auto cycle: only the lead
+  // frame waits on a reveal, so a clock started before it had decoded could cut
+  // to the second picture over the placeholder and leave the first one — the one
+  // the editor chose to open on — never seen. A hover is a deliberate act and
+  // doesn't wait: the reader is already looking at the card.
+  const cycling =
+    images.length > 1 && canAnimate() && (auto ? inView && landed : hovering);
 
   useInterval(
     () => {
@@ -62,24 +104,36 @@ export default function FrameCycle({
     cycling ? interval : null,
   );
 
-  const start = () => {
-    if (images.length < 2 || !canAnimate()) return;
-    // The next frame mounts on start rather than on the first tick, so it has a
-    // full interval to load before it is shown.
+  // The frame after the current one mounts the moment the cycle starts rather
+  // than on the first tick, so it has a full interval to load before it shows.
+  const mounted = cycling ? Math.max(reach, 1) : reach;
+
+  // A hover keeps what it reached even after the pointer leaves, so coming back
+  // to a card is instant; a carousel glimpsed on the way past the fold has no
+  // such promise to keep, and lets the frame go again.
+  const enter = () => {
+    // Nothing to cycle, or nobody who wants one: don't fetch the next frame for
+    // a hover that was never going to move.
+    if (images.length < 2 || !canAnimate() || !canHover()) return;
+    setHovering(true);
     setReach((current) => Math.max(current, 1));
-    setCycling(true);
   };
 
-  const stop = () => {
-    setCycling(false);
-    setIndex(0);
+  const leave = () => {
+    setHovering(false);
+    if (resetOnStop) setIndex(0);
   };
 
-  const hover = trigger === "hover";
-
+  // The shadow goes on the box rather than on the frames. Frames are stacked
+  // absolutely at the same rect, so shadowing each one would lay the current
+  // frame's shadow over the first frame's and compound the alpha — a carousel
+  // would sit visibly deeper than the still image beside it. The box is exactly
+  // the picture's bounds, so one shadow there is the same shadow with none of
+  // the doubling.
   const box = [
     "relative mx-auto",
     ASPECT_CLASS[ratio] ?? "",
+    shadow ? "image-shadow" : "",
     hover ? "group" : "",
     className,
   ]
@@ -106,10 +160,13 @@ export default function FrameCycle({
 
   return (
     <div
+      // Only an auto cycle has anything to ask the viewport, and the grid is
+      // enough cards at once that an observer each is worth not spending.
+      ref={auto ? viewRef : undefined}
       className={box}
       style={style}
-      onMouseEnter={hover ? () => canHover() && start() : undefined}
-      onMouseLeave={hover ? stop : undefined}
+      onMouseEnter={hover ? enter : undefined}
+      onMouseLeave={hover ? leave : undefined}
     >
       <ImageWrapper
         image={images[0]}
@@ -117,12 +174,10 @@ export default function FrameCycle({
         sizes={sizes}
         alt={alt}
         fill
-        // Auto-play starts once the first frame has actually landed. Frames
-        // are lazy by default, so that is also the point at which the
-        // carousel is near enough the viewport to be worth cycling.
-        onLoad={trigger === "auto" ? start : undefined}
+        // What releases an auto cycle, along with being in view — see `cycling`.
+        onLoad={auto ? () => setLanded(true) : undefined}
       />
-      {images.slice(1, reach + 1).map((frame, offset) => (
+      {images.slice(1, mounted + 1).map((frame, offset) => (
         <ImageWrapper
           key={pickCrop(frame, ratio)?.url ?? offset}
           image={frame}

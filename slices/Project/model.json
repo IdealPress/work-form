@@ -90,6 +90,15 @@
             "default_value": "Full"
           }
         },
+        "shadow": {
+          "type": "Boolean",
+          "config": {
+            "label": "Drop shadow",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
         "link": {
           "type": "Link",
           "config": {

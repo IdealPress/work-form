@@ -19,6 +19,15 @@
             "placeholder_true": "true",
             "default_value": false
           }
+        },
+        "carousel_hover": {
+          "type": "Boolean",
+          "config": {
+            "label": "Progress on hover",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
         }
       },
       "items": {
@@ -88,6 +97,24 @@
               "Regular"
             ],
             "default_value": "Full"
+          }
+        },
+        "shadow": {
+          "type": "Boolean",
+          "config": {
+            "label": "Drop shadow",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
+        "hide_from_grid": {
+          "type": "Boolean",
+          "config": {
+            "label": "Hide from project grid preview",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
           }
         },
         "link": {

@@ -19,6 +19,11 @@ import { revealClass } from "./Reveal";
  * `placeholder` is for images stacked on top of something — a frame mid-cycle
  * shows the frame beneath while it loads, and grey would only cover it up.
  *
+ * `shadow` is the editor's per-image drop shadow. It sits on the picture rather
+ * than on the figure around it, so the shadow follows the crop's own edge
+ * instead of a box that may be wider than the image inside it — and so a
+ * caption underneath is never cast over.
+ *
  * Nothing here holds the image to the screen's height: that cap belongs to
  * whatever lays the image out — the figure around it, or the box it fills — so
  * that a caption is narrowed along with the picture it belongs to.
@@ -34,6 +39,7 @@ export default function ImageWrapper({
   priority = false,
   reveal = true,
   placeholder = true,
+  shadow = item?.shadow ?? false,
   onLoad,
 }) {
   const [ref, inView, initiallyVisible] = useReveal();
@@ -53,6 +59,7 @@ export default function ImageWrapper({
   const classes = [
     reveal ? revealClass(revealed, initiallyVisible) : "",
     hasLoaded || !placeholder ? "" : "bg-gray-200",
+    shadow ? "image-shadow" : "",
     fill ? "object-cover" : "",
     className,
   ]

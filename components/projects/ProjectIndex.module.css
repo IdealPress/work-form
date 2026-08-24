@@ -9,7 +9,8 @@
  * opening out into the full four-column index at md.
  */
 .head,
-.link {
+.link,
+.plain {
   @apply grid grid-cols-[2fr_1fr] md:grid-cols-[6rem_2fr_1.5fr_1.5fr] gap-x-4 py-3;
 }
 
@@ -24,6 +25,14 @@
 
 .link {
   @apply hover:text-grey;
+}
+
+/*
+ * An index-only row. Same grid, but no hover state — the row shouldn't offer a
+ * response to a pointer when there is nothing behind it to open.
+ */
+.plain {
+  @apply cursor-default;
 }
 
 /*
