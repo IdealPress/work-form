@@ -41,7 +41,7 @@ export default function Footer() {
       </div>
       <div className="md:w-1/4 flex pb-12 md:pb-0 items-start justify-center md:justify-end order-1 md:order-4">
         <Lottie
-          className="w-40 lg:-mt-6"
+          className="w-52 lg:-mt-6"
           animationData={workFormMascot}
           loop={true}
         />
