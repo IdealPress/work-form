@@ -1,5 +1,5 @@
 import NextImage from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { useReveal, pickCrop, isAnimated, withoutUpscale } from "lib";
 import { revealClass } from "./Reveal";
@@ -24,6 +24,11 @@ import { revealClass } from "./Reveal";
  * instead of a box that may be wider than the image inside it — and so a
  * caption underneath is never cast over.
  *
+ * `onReveal` is the moment the picture is actually on screen and decoded, for
+ * anything that has to arrive with it rather than on its own terms. It is
+ * handed the same `initiallyVisible` the reveal used, so a caller can take the
+ * picture's stagger as well as its timing.
+ *
  * Nothing here holds the image to the screen's height: that cap belongs to
  * whatever lays the image out — the figure around it, or the box it fills — so
  * that a caption is narrowed along with the picture it belongs to.
@@ -41,14 +46,27 @@ export default function ImageWrapper({
   placeholder = true,
   shadow = item?.shadow ?? false,
   onLoad,
+  onReveal,
 }) {
   const [ref, inView, initiallyVisible] = useReveal();
   const [hasLoaded, setHasLoaded] = useState(false);
 
+  const revealed = !reveal || (inView && hasLoaded);
+
+  // Kept in a ref so the announcement below depends on the reveal alone: a
+  // caller passing the inline callback that reads most naturally at the call
+  // site shouldn't have to hand us a stable one to avoid being told twice.
+  const announce = useRef(onReveal);
+  useEffect(() => {
+    announce.current = onReveal;
+  }, [onReveal]);
+
+  useEffect(() => {
+    if (revealed) announce.current?.(initiallyVisible);
+  }, [revealed, initiallyVisible]);
+
   const source = pickCrop(image, ratio);
   if (!source?.url) return null;
-
-  const revealed = !reveal || (inView && hasLoaded);
 
   // An animation goes to Prismic's CDN as it is: the optimiser can't do
   // anything with it but download it, and a crop the model upscaled would be

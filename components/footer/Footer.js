@@ -2,9 +2,11 @@ import Link from "next/link";
 import Lottie from "lottie-react";
 import workFormMascot from "./man_ai_layers.json";
 
+import styles from "./Footer.module.css";
+
 export default function Footer() {
   return (
-    <div className="flex flex-col md:flex-row md:h-60 p-8 md:space-x-12 space-y-6 md:space-y-0 md:mt-16">
+    <div className={styles.base}>
       <div className="w-full md:w-1/3 lg:w-1/4 order-2 md:order-1">
         <p>
           For project enquires and portfolio requests please email studio at

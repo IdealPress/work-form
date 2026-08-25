@@ -11,7 +11,13 @@ import {
 import ImageWrapper from "./ImageWrapper";
 
 // How long each frame holds before the next one cuts in.
-export const CYCLE_MS = 900;
+export const CYCLE_MS = 1000;
+
+// What the first frame gains on the rest of them, so its loading line has the
+// room to travel the width of the picture and finish there. Long enough to read
+// as a line crossing rather than a flicker, short enough that the frame the
+// editor chose to open on is still the one being looked at.
+export const LEAD_MS = 150;
 
 // A handful of frames reads as a preview; anything past that is a reason to
 // visit the project, and a lot of bytes for a hover.
@@ -56,6 +62,10 @@ const canHover = () =>
  *
  * `frames` are Prismic image fields; each is cropped to `ratio`, so every frame
  * fills the same box.
+ *
+ * `onReveal` passes on the lead frame's arrival — the frames behind it have no
+ * reveal of their own to report — so a caption can land with the picture rather
+ * than ahead of it.
  */
 export default function FrameCycle({
   frames = [],
@@ -68,6 +78,7 @@ export default function FrameCycle({
   cap = true,
   shadow = false,
   className = "",
+  onReveal,
 }) {
   const images = frames.filter((frame) => frame?.url).slice(0, MAX_FRAMES);
 
@@ -75,6 +86,7 @@ export default function FrameCycle({
   const [hovering, setHovering] = useState(false);
   const [reach, setReach] = useState(0);
   const [landed, setLanded] = useState(false);
+  const [led, setLed] = useState(false);
 
   const hover = trigger === "hover";
   const auto = trigger === "auto";
@@ -93,15 +105,29 @@ export default function FrameCycle({
   const cycling =
     images.length > 1 && canAnimate() && (auto ? inView && landed : hovering);
 
+  // A carousel gives no warning that it is about to move: an auto one starts
+  // cutting at a picture the reader is still reading, and a card's hover preview
+  // reads as a still image right up until it isn't. So the first frame holds a
+  // little longer than the rest and spends that hold drawing a line across the
+  // foot of the picture — by the time the line reaches the far edge, the cut it
+  // was counting down to happens.
+  //
+  // Only ever before the first cut. `led` is what the cycle has already moved
+  // once, so a carousel looping back round to its first frame doesn't announce
+  // itself a second time; a grid card, which starts its preview over each time
+  // you come back to it, clears it on the way out and leads in again.
+  const leading = cycling && !led;
+
   useInterval(
     () => {
+      setLed(true);
       const next = (index + 1) % images.length;
       setIndex(next);
       setReach((current) =>
         Math.max(current, Math.min(next + 1, images.length - 1)),
       );
     },
-    cycling ? interval : null,
+    cycling ? (leading ? interval + LEAD_MS : interval) : null,
   );
 
   // The frame after the current one mounts the moment the cycle starts rather
@@ -121,7 +147,10 @@ export default function FrameCycle({
 
   const leave = () => {
     setHovering(false);
-    if (resetOnStop) setIndex(0);
+    if (resetOnStop) {
+      setIndex(0);
+      setLed(false);
+    }
   };
 
   // The shadow goes on the box rather than on the frames. Frames are stacked
@@ -176,6 +205,7 @@ export default function FrameCycle({
         fill
         // What releases an auto cycle, along with being in view — see `cycling`.
         onLoad={auto ? () => setLanded(true) : undefined}
+        onReveal={onReveal}
       />
       {images.slice(1, mounted + 1).map((frame, offset) => (
         <ImageWrapper
@@ -193,6 +223,18 @@ export default function FrameCycle({
           alt=""
         />
       ))}
+      {leading && (
+        // Last in the box, so it paints over the frames without a z-index. The
+        // duration is handed to the CSS rather than restated there: the line and
+        // the hold it belongs to are the same length by construction, whatever
+        // interval a caller passes.
+        <span
+          className="frame-lead"
+          style={{ "--frame-lead-duration": `${interval + LEAD_MS}ms` }}
+        >
+          <span className="frame-lead-bar" />
+        </span>
+      )}
     </div>
   );
 }

@@ -57,7 +57,7 @@
  * colour of its own.
  */
 .base a {
-  @apply hover:text-black;
+  @apply hover:text-black focus-visible:outline-0 focus-visible:border-b-2 border-grey;
 }
 
 .active {

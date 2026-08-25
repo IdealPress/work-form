@@ -25,12 +25,9 @@
   @apply inline-block;
 }
 
-.wrapper a {
-  @apply hover:text-grey;
-}
-
+.wrapper a,
 .wrapper button {
-  @apply hover:text-grey;
+  @apply hover:text-grey focus-visible:outline-2 outline-offset-4 outline-grey;
 }
 
 .lede {

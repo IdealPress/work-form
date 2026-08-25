@@ -118,6 +118,35 @@
   }
 
   /*
+   * The line a carousel draws across its own foot before its first cut, while
+   * the first frame holds a little longer than the rest — see `leading` in
+   * FrameCycle, which owns when it runs and hands the duration down. A carousel
+   * otherwise starts moving with no warning, and this is the smallest thing
+   * that can say a picture is about to become several.
+   *
+   * White under `difference`, so the line inverts whatever it is lying on
+   * rather than assuming the foot of the picture is light or dark — an image
+   * set is the one place on the site with no say in what a colour will land on.
+   * The track is the same white held back, so the line reads as travelling a
+   * distance rather than simply growing.
+   */
+  .frame-lead {
+    @apply pointer-events-none absolute inset-x-0 bottom-0 h-1;
+    @apply bg-transparent;
+  }
+
+  /*
+   * Scaled rather than widened: a transform is composited, so the line crossing
+   * a full-bleed picture never asks the page for another layout. `linear`
+   * because it is counting down a fixed hold — an eased line would arrive at
+   * the far edge at a moment the cut doesn't share.
+   */
+  .frame-lead-bar {
+    @apply block h-full w-full origin-left bg-grey;
+    animation: frame-lead var(--frame-lead-duration, 1900ms) linear forwards;
+  }
+
+  /*
    * The vertical rhythm between slices, in one place. A phone is a single
    * column whatever the slices underneath it are doing, and a reader can't see
    * where one ends and the next begins — so the gap between two images in the
@@ -133,6 +162,21 @@
     .reveal {
       @apply opacity-100 blur-none transition-none;
     }
+
+    /* The cycle it counts down to doesn't run here either, so there is nothing
+       left for the line to announce. */
+    .frame-lead {
+      @apply hidden;
+    }
+  }
+}
+
+@keyframes frame-lead {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
   }
 }
 

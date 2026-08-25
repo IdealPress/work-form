@@ -4,7 +4,7 @@ export default function LinkWrapper({ url, target, className, children }) {
   return url ? (
     <Link
       href={url}
-      className={`group custom-blur focus:outline-hidden${
+      className={`group custom-blur focus:outline-4 outline-offset-0 outline-grey ${
         className ? ` ${className}` : ""
       }`}
       target={target}

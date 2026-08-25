@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 
-import { FrameCycle } from "components";
+import { FrameCycle, revealClass } from "components";
 import { pickCrop } from "lib";
 
 // Every card is held to the same shape so the grid stays even, whatever crops
@@ -50,16 +50,41 @@ function useFrames(project) {
 function ProjectCard({ project }) {
   const frames = useFrames(project);
 
+  // A caption sits below the picture it belongs to, so it clears the fold
+  // before the picture does and — left to watch the viewport for itself — would
+  // announce a project a moment before there was anything to look at. It takes
+  // the picture's arrival instead: the same moment, and the same stagger for a
+  // card that was already on screen at load.
+  const [arrived, setArrived] = useState(false);
+  const [delayed, setDelayed] = useState(false);
+
   return (
-    <Link href={`/projects/${project.uid}`} className="group block">
+    <Link
+      href={`/projects/${project.uid}`}
+      className="group block focus:outline-0"
+    >
       <figure>
         <FrameCycle
           frames={frames}
           ratio={CARD_RATIO}
           sizes={GRID_SIZES}
           alt={project?.data?.cover?.alt}
+          onReveal={(initiallyVisible) => {
+            setArrived(true);
+            setDelayed(initiallyVisible);
+          }}
+          className="group-focus-visible:outline-4 outline-grey outline-offset-0"
         />
-        <figcaption className="mt-3 leading-snug text-lg group-focus:text-grey group-hover:text-grey">
+        {/* A single line of large type fades rather than resolving out of a
+            blur, which at this size reads as mis-rendered — the same call the
+            index rows' own captions make. */}
+        <figcaption
+          className={`mt-3 leading-snug text-lg group-focus:text-grey group-hover:text-grey ${revealClass(
+            arrived,
+            delayed,
+            { variant: "fade" },
+          )}`}
+        >
           {project?.data?.title}
         </figcaption>
       </figure>

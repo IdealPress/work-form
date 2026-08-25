@@ -24,7 +24,7 @@
 }
 
 .link {
-  @apply hover:text-grey;
+  @apply hover:text-grey focus:text-grey focus:outline-0;
 }
 
 /*
