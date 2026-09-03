@@ -2,12 +2,16 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import { Navigation, Footer } from "components";
+import { Navigation, NewsletterBar, Footer } from "components";
 
 import styles from "./ProjectLayout.module.css";
 import { useEffect, useState } from "react";
 
-export default function ProjectLayout({ title = "", children }) {
+export default function ProjectLayout({
+  title = "",
+  children,
+  newsletter = null,
+}) {
   const router = useRouter();
 
   const toggleText = (e) => {
@@ -52,6 +56,7 @@ export default function ProjectLayout({ title = "", children }) {
         </Navigation>
         {children}
       </div>
+      <NewsletterBar newsletter={newsletter} />
       <Footer />
     </>
   );

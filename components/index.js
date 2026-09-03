@@ -6,6 +6,7 @@ export { default as ProjectLayout } from "./layout/ProjectLayout.js";
 export { default as SizeWrapper } from "./helpers/SizeWrapper.js";
 export { default as LinkWrapper } from "./helpers/LinkWrapper.js";
 export { default as ImageWrapper } from "./helpers/ImageWrapper.js";
+export { default as MediaWrapper } from "./helpers/MediaWrapper.js";
 export { default as Reveal, revealClass } from "./helpers/Reveal.js";
 export { default as FrameCycle } from "./helpers/FrameCycle.js";
 export { default as RichText } from "./helpers/RichText.js";
@@ -33,6 +34,7 @@ export { default as TopRightArrow } from "./svg/TopRightArrow.js";
 
 // Newsletter
 export { default as NewsletterBar } from "./newsletter/NewsletterBar.js";
+export { default as NewsletterDialog } from "./newsletter/NewsletterDialog.js";
 
 // Footer
 export { default as Footer } from "./footer/Footer.js";

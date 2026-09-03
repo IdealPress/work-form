@@ -2,7 +2,7 @@
 import { SliceZone } from "@prismicio/react";
 
 // Lib
-import { createClient } from "prismicio";
+import { createClient, getNewsletter } from "prismicio";
 import { components } from "slices";
 
 // Components
@@ -19,7 +19,9 @@ export default function About({ content }) {
 }
 
 About.getLayout = function getLayout(page) {
-  return <DefaultLayout>{page}</DefaultLayout>;
+  return (
+    <DefaultLayout newsletter={page.props.newsletter}>{page}</DefaultLayout>
+  );
 };
 
 export async function getStaticProps({ previewData }) {
@@ -28,6 +30,6 @@ export async function getStaticProps({ previewData }) {
     // graphQuery: homeGraphQuery,
   });
   return {
-    props: { content },
+    props: { content, newsletter: await getNewsletter(client) },
   };
 }

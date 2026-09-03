@@ -3,18 +3,15 @@
 import Image from './Image';
 import Project from './Project';
 import TextBlock from './TextBlock';
-import VideoBlock from './VideoBlock';
 
 export {
 	Image,
 	Project,
 	TextBlock,
-	VideoBlock,
 };
 
 export const components = {
 	image_multiple: Image,
 	project: Project,
 	text_block: TextBlock,
-	video_block: VideoBlock,
 };

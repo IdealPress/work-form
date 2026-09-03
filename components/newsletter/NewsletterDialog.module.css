@@ -1,0 +1,155 @@
+@reference "../../styles/globals.css";
+
+/*
+ * The card. `showModal()` puts it in the top layer, so it needs no z-index of
+ * its own and sits above the sticky nav without either of them having to agree
+ * one. Most of what is set here is undoing a UA default — a dialog arrives with
+ * a border and 1em of padding — and the rest is the card's own shape.
+ *
+ * The inset matches the page gutter on both sides, so on a phone the card stops
+ * exactly where the page's own text does.
+ *
+ * The centring is written out rather than inherited. A modal dialog is centred
+ * by the UA pinning it to `inset: 0` and letting `margin: auto` take up the
+ * slack on all four sides — but Tailwind's preflight sets `margin: 0` on every
+ * element, which takes that away and leaves the card in the top left corner.
+ * `height: fit-content` is restated for the same reason it matters there: with
+ * both block insets pinned, an auto height would stretch to fill instead of
+ * shrinking to the content and letting the margins do the work.
+ */
+.dialog {
+  --card: min(30rem, calc(100vw - 2 * var(--spacing-gutter)));
+
+  @apply p-gutter sm:px-8 sm:pb-8 sm:pt-6 border-0 bg-white text-black;
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: var(--card);
+  max-width: var(--card);
+  height: fit-content;
+  max-height: calc(100svh - 2 * var(--spacing-gutter));
+  overflow-y: auto;
+
+  /* The same two-layer cast as `.image-shadow`: a tight edge and a wide, soft
+     one, both straight down. It is what separates a white surface from a white
+     page everywhere else on the site. */
+  box-shadow:
+    0 0.125rem 0.375rem rgb(0 0 0 / 0.08),
+    0 1rem 2.5rem -0.75rem rgb(0 0 0 / 0.22);
+}
+
+/*
+ * No dim. The page behind is already inert and unreachable, and darkening it
+ * would be the one heavy surface on a site that separates things with a shadow
+ * and a gutter. Transparent still renders a box, so it goes on catching the
+ * press that closes the card.
+ */
+.dialog::backdrop {
+  background: transparent;
+}
+
+/* Opening only. A card that fades out on the way is a card still on screen
+   after the reader has finished with it. */
+.dialog[open] {
+  animation: dialog-in 250ms ease-out;
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.header {
+  @apply flex items-baseline justify-between gap-gutter;
+}
+
+.title {
+  @apply text-xl sm:text-2xl leading-snug;
+}
+
+/* Grey, and darkening on hover — the inverse of the site's usual hover, because
+   here it is the quieter of the two things in the row. */
+.close {
+  @apply shrink-0 text-lg leading-snug text-grey transition-colors hover:text-black cursor-pointer;
+}
+
+/*
+ * A flex column rather than `space-y`, so the hidden list field and the status
+ * line while it is still empty cost nothing: neither is a flex item, so no gap
+ * is opened for either.
+ */
+.form {
+  @apply mt-10 sm:mt-12 flex flex-col gap-10 sm:gap-12;
+}
+
+.field {
+  @apply flex items-end gap-4;
+}
+
+/* `min-w-0` because a flex item will not shrink below the width its own
+   placeholder wants without it, and the button would be pushed off the card. */
+.input {
+  @apply min-w-0 flex-1 pb-1 bg-transparent border-b border-grey;
+  @apply text-lg sm:text-xl leading-snug placeholder:text-grey focus:border-black;
+}
+
+/* The bar's button inverted: black on the card, as the card is white on the
+   page. */
+.submit {
+  @apply shrink-0 px-6 py-1 bg-black text-white text-lg sm:text-xl leading-snug transition-colors hover:text-grey cursor-pointer;
+}
+
+.submit:disabled {
+  @apply bg-grey cursor-default hover:text-white;
+}
+
+/*
+ * Until the consent box is ticked. Deliberately not the `disabled` attribute:
+ * the button still submits, and the browser's own validation is what then names
+ * the control that is missing and moves focus to it. A dead button would go
+ * grey and say nothing, leaving the reader to work out which of the two things
+ * on the card it was waiting for.
+ */
+.submit[data-ready="false"] {
+  @apply bg-grey hover:text-white;
+}
+
+.consent {
+  @apply flex items-start gap-3 text-sm leading-snug text-grey;
+}
+
+.checkbox {
+  @apply mt-0.5 size-4 shrink-0 accent-black cursor-pointer;
+}
+
+/* Set in the page's own black rather than the consent line's grey: it is the
+   one thing in the card the reader is being asked to read. */
+.status {
+  @apply text-sm leading-snug text-black;
+}
+
+/* Nothing to announce yet — and not a flex item, so the gap goes with it. */
+.status:empty {
+  @apply hidden;
+}
+
+/* The site's focus ring, as the nav sets it, on everything here that takes
+   focus. Placed last so it wins over the rules above on equal specificity. */
+.close,
+.input,
+.submit,
+.checkbox {
+  @apply focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-grey;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialog[open] {
+    animation: none;
+  }
+}

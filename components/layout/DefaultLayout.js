@@ -2,11 +2,15 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import { Navigation, Footer } from "components";
+import { Navigation, NewsletterBar, Footer } from "components";
 
 import styles from "./DefaultLayout.module.css";
 
-export default function DefaultLayout({ children, lede = null }) {
+export default function DefaultLayout({
+  children,
+  lede = null,
+  newsletter = null,
+}) {
   const router = useRouter();
   return (
     <>
@@ -40,6 +44,7 @@ export default function DefaultLayout({ children, lede = null }) {
         </Navigation>
         {children}
       </div>
+      <NewsletterBar newsletter={newsletter} />
       <Footer />
     </>
   );

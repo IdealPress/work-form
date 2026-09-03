@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import * as prismic from "@prismicio/client";
 import { SliceZone } from "@prismicio/react";
 
-import { createClient, linkResolver } from "prismicio";
+import { createClient, getNewsletter, linkResolver } from "prismicio";
 
 import { ProjectLayout, RichText } from "components";
 import { components } from "slices";
@@ -68,7 +68,12 @@ export default function Project({ content }) {
 
 Project.getLayout = function getLayout(page) {
   return (
-    <ProjectLayout title={page.props.content.data.title}>{page}</ProjectLayout>
+    <ProjectLayout
+      title={page.props.content.data.title}
+      newsletter={page.props.newsletter}
+    >
+      {page}
+    </ProjectLayout>
   );
 };
 
@@ -85,6 +90,6 @@ export async function getStaticProps({ params, previewData }) {
   const client = createClient({ previewData });
   const content = await client.getByUID("project", params.uid);
   return {
-    props: { content },
+    props: { content, newsletter: await getNewsletter(client) },
   };
 }

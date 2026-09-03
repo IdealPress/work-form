@@ -13,10 +13,10 @@ import ImageWrapper from "./ImageWrapper";
 // How long each frame holds before the next one cuts in.
 export const CYCLE_MS = 1000;
 
-// What the first frame gains on the rest of them, so its loading line has the
-// room to travel the width of the picture and finish there. Long enough to read
-// as a line crossing rather than a flicker, short enough that the frame the
-// editor chose to open on is still the one being looked at.
+// What the first frame gains on the rest of them, so its loading ring has the
+// room to close and finish there. Long enough to read as a sweep rather than a
+// flicker, short enough that the frame the editor chose to open on is still the
+// one being looked at.
 export const LEAD_MS = 150;
 
 // A handful of frames reads as a preview; anything past that is a reason to
@@ -108,9 +108,9 @@ export default function FrameCycle({
   // A carousel gives no warning that it is about to move: an auto one starts
   // cutting at a picture the reader is still reading, and a card's hover preview
   // reads as a still image right up until it isn't. So the first frame holds a
-  // little longer than the rest and spends that hold drawing a line across the
-  // foot of the picture — by the time the line reaches the far edge, the cut it
-  // was counting down to happens.
+  // little longer than the rest and spends that hold closing a ring in the top
+  // corner of the picture — by the time the ring joins up, the cut it was
+  // counting down to happens.
   //
   // Only ever before the first cut. `led` is what the cycle has already moved
   // once, so a carousel looping back round to its first frame doesn't announce
@@ -225,15 +225,23 @@ export default function FrameCycle({
       ))}
       {leading && (
         // Last in the box, so it paints over the frames without a z-index. The
-        // duration is handed to the CSS rather than restated there: the line and
+        // duration is handed to the CSS rather than restated there: the ring and
         // the hold it belongs to are the same length by construction, whatever
         // interval a caller passes.
-        <span
+        <svg
+          viewBox="0 0 100 100"
+          aria-hidden="true"
           className="frame-lead"
           style={{ "--frame-lead-duration": `${interval + LEAD_MS}ms` }}
         >
-          <span className="frame-lead-bar" />
-        </span>
+          <circle
+            className="frame-lead-arc"
+            cx="50"
+            cy="50"
+            r="40"
+            pathLength="100"
+          />
+        </svg>
       )}
     </div>
   );

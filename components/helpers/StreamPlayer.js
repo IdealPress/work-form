@@ -17,23 +17,10 @@ const streamType = (url) => {
   return "file";
 };
 
-// Accepts "16:9" (what the CMS stores), "16 / 9" or "Auto".
-const toAspectRatio = (ratio) => {
-  if (!ratio || ratio.toLowerCase() === "auto") return undefined;
-  return ratio.replace(":", " / ");
-};
-
-// The screen-height cap, which a video obeys through its width like everything
-// else. "Auto" has no shape to work from and goes uncapped.
-const toMaxWidth = (ratio) => {
-  const [width, height] = (toAspectRatio(ratio) ?? "").split(" / ").map(Number);
-  return cappedWidth(width / height);
-};
-
 export default function StreamPlayer({
   src,
   poster,
-  ratio,
+  shape,
   fit = "cover",
   cap = true,
   className = "",
@@ -121,12 +108,18 @@ export default function StreamPlayer({
     .filter(Boolean)
     .join(" ");
 
+  // `shape` does both jobs: CSS takes a bare aspect-ratio, and the
+  // screen-height cap — which a video obeys through its width like everything
+  // else — is worked out from the same number. It arrives already resolved, so
+  // the CMS's ratio vocabulary is read in one place rather than in each player;
+  // no shape at all leaves the video to size itself.
+
   return (
     <div
       className={`mx-auto${contain ? " bg-black" : ""}`}
       style={{
-        aspectRatio: toAspectRatio(ratio),
-        maxWidth: cap ? toMaxWidth(ratio) : undefined,
+        aspectRatio: shape,
+        maxWidth: cap ? cappedWidth(shape) : undefined,
       }}
     >
       <video

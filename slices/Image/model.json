@@ -10,26 +10,7 @@
       "docURL": "...",
       "version": "sktwi1xtmkfgx8626",
       "description": "ImageMultiple",
-      "primary": {
-        "carousel": {
-          "type": "Boolean",
-          "config": {
-            "label": "Auto-play carousel",
-            "placeholder_false": "false",
-            "placeholder_true": "true",
-            "default_value": false
-          }
-        },
-        "carousel_hover": {
-          "type": "Boolean",
-          "config": {
-            "label": "Progress on hover",
-            "placeholder_false": "false",
-            "placeholder_true": "true",
-            "default_value": false
-          }
-        }
-      },
+      "primary": {},
       "items": {
         "image": {
           "type": "Image",
@@ -66,8 +47,20 @@
                 "name": "4:3",
                 "width": 2500,
                 "height": 1875
+              },
+              {
+                "name": "21:9",
+                "width": 2500,
+                "height": 1071
               }
             ]
+          }
+        },
+        "video": {
+          "type": "Embed",
+          "config": {
+            "label": "Video (takes over from the image, which becomes its poster)",
+            "placeholder": "Paste a Vimeo or Gumlet share link"
           }
         },
         "ratio": {
@@ -82,7 +75,8 @@
               "4:5",
               "4:3",
               "1:1",
-              "3:2"
+              "3:2",
+              "21:9"
             ],
             "default_value": "main"
           }
@@ -97,6 +91,18 @@
               "Regular"
             ],
             "default_value": "Full"
+          }
+        },
+        "background": {
+          "type": "Select",
+          "config": {
+            "label": "Video background",
+            "placeholder": "",
+            "options": [
+              "None",
+              "Black"
+            ],
+            "default_value": "None"
           }
         },
         "shadow": {
@@ -117,13 +123,161 @@
             "default_value": false
           }
         },
-        "link": {
-          "type": "Link",
+        "caption": {
+          "type": "Text",
           "config": {
-            "label": "Link",
+            "label": "Caption",
+            "placeholder": ""
+          }
+        },
+        "show_caption": {
+          "type": "Boolean",
+          "config": {
+            "label": "Show Caption",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": true
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    },
+    {
+      "id": "carousel",
+      "name": "Carousel",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "ImageMultiple",
+      "primary": {
+        "autoplay": {
+          "type": "Boolean",
+          "config": {
+            "label": "Auto-play carousel",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        }
+      },
+      "items": {
+        "cycle": {
+          "type": "Boolean",
+          "config": {
+            "label": "Cycle with the item above",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": [
+              {
+                "name": "4:5",
+                "width": 2000,
+                "height": 2500
+              },
+              {
+                "name": "1:1",
+                "width": 2500,
+                "height": 2500
+              },
+              {
+                "name": "3:2",
+                "width": 2500,
+                "height": 1667
+              },
+              {
+                "name": "16:9",
+                "width": 2500,
+                "height": 1406
+              },
+              {
+                "name": "5:4",
+                "width": 2500,
+                "height": 2000
+              },
+              {
+                "name": "4:3",
+                "width": 2500,
+                "height": 1875
+              },
+              {
+                "name": "21:9",
+                "width": 2500,
+                "height": 1071
+              }
+            ]
+          }
+        },
+        "video": {
+          "type": "Embed",
+          "config": {
+            "label": "Video (takes over from the image, which becomes its poster)",
+            "placeholder": "Paste a Vimeo or Gumlet share link"
+          }
+        },
+        "ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Ratio",
             "placeholder": "",
-            "allowTargetBlank": true,
-            "select": null
+            "options": [
+              "main",
+              "16:9",
+              "5:4",
+              "4:5",
+              "4:3",
+              "1:1",
+              "3:2",
+              "21:9"
+            ],
+            "default_value": "main"
+          }
+        },
+        "size": {
+          "type": "Select",
+          "config": {
+            "label": "Size",
+            "placeholder": "",
+            "options": [
+              "Full",
+              "Regular"
+            ],
+            "default_value": "Full"
+          }
+        },
+        "background": {
+          "type": "Select",
+          "config": {
+            "label": "Video background",
+            "placeholder": "",
+            "options": [
+              "None",
+              "Black"
+            ],
+            "default_value": "None"
+          }
+        },
+        "shadow": {
+          "type": "Boolean",
+          "config": {
+            "label": "Drop shadow",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
+        "hide_from_grid": {
+          "type": "Boolean",
+          "config": {
+            "label": "Hide from project grid preview",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
           }
         },
         "caption": {

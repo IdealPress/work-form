@@ -1,6 +1,6 @@
 import React from "react";
-import { SizeWrapper, LinkWrapper, ImageWrapper, FrameCycle } from "components";
-import { imageCap, isNarrow, rowSizes } from "lib";
+import { SizeWrapper, MediaWrapper, FrameCycle } from "components";
+import { hasVideo, imageCap, isNarrow, rowSizes } from "lib";
 
 /*
  * The caption a plain image and a carousel both sit under, so the two paths
@@ -8,13 +8,15 @@ import { imageCap, isNarrow, rowSizes } from "lib";
  * the editor hasn't written one.
  */
 const Caption = ({ item, context }) => (
-  <figcaption className="leading-tight text-base md:text-lg pt-2">
+  <figcaption className="leading-tight text-base pt-2">
     {item.show_caption && (
       <>
         {item.caption ? (
-          <p className="text-grey">{item.caption}</p>
+          <p className="text-grey opacity-0 group-hover:opacity-100 transition-opacity">
+            {item.caption}
+          </p>
         ) : (
-          <p className="group-focus:text-grey group-hover:text-grey">
+          <p className="group-focus:text-grey group-hover:text-grey opacity-0 group-hover:opacity-100 transition-opacity">
             {context.data.title}
             {context.tags.map((tag, index) => (
               <span className="ml-2 text-grey" key={index}>
@@ -28,48 +30,80 @@ const Caption = ({ item, context }) => (
   </figcaption>
 );
 
+/**
+ * The cells of the row, read off the items rather than off a layout the editor
+ * has to name.
+ *
+ * An item that cycles with the one above it folds into the cell before it as
+ * another of that cell's frames; anything else opens a new cell beside it. One
+ * tickbox therefore spells out every arrangement — a carousel next to a still,
+ * two carousels side by side, a video between them — with no positions to
+ * enumerate and nothing to keep in step with the number of items. It reads
+ * locally, too: an item only ever refers to the one above, so reordering items
+ * in Prismic rearranges the row exactly the way the list looks like it should.
+ */
+const cells = (items) =>
+  items.reduce((row, item) => {
+    // The first item has nothing above it to join, whatever it says.
+    if (item.cycle && row.length) row[row.length - 1].push(item);
+    else row.push([item]);
+    return row;
+  }, []);
+
+/*
+ * The screen-height cap for the figure around a still image, which is held by
+ * the crop's own dimensions. A video sizes itself from the ratio it was given
+ * and applies the same cap from inside, so the figure leaves it alone rather
+ * than capping it twice against a poster that may not even be there.
+ */
+const figureCap = (lead) =>
+  isNarrow(lead.size) && !hasVideo(lead.video)
+    ? { maxWidth: imageCap(lead.image, lead.ratio) }
+    : undefined;
+
+/**
+ * A row of media. Every cell is an image, a video, or a set of either cycling
+ * in place — the same frame, the same shape, size and caption — so what a slice
+ * holds is decided by what the editor uploaded into it rather than by which
+ * slice they reached for.
+ *
+ * A cell's first item is the one that furnishes it: its ratio, size and caption
+ * stand for the whole cell, so the frames cycling behind it don't each ask for
+ * a set of fields only the first one is read from.
+ */
 const Image = ({ slice, context }) => {
-  const carousel = slice.primary.carousel && slice.items.length > 1;
+  const row = cells(slice.items);
 
   /*
-   * Two ways to move a carousel on. Left alone it plays itself once it is
-   * scrolled to; "Progress on hover" hands that to the reader instead, for the
-   * sets where the point is comparing one frame against the next rather than
-   * watching them go by. Hover is a pointer's move, so on a touch screen such a
-   * carousel simply holds on its first frame — which is the same first frame
-   * the editor chose to lead with.
+   * Left alone a carousel plays itself once it is scrolled to; untick auto-play
+   * and it waits for the reader instead, for the sets where the point is
+   * comparing one frame against the next rather than watching them go by. Hover
+   * is a pointer's move, so on a touch screen such a carousel simply holds on
+   * its first frame — which is the same first frame the editor chose to lead
+   * with.
    */
-  const trigger = slice.primary.carousel_hover ? "hover" : "auto";
-
-  /*
-   * A carousel is one image's worth of furniture with the rest of the items
-   * cycling inside it, so it renders from the first item alone: that item's
-   * ratio, size, caption and link stand for the whole thing, and the editor
-   * doesn't have to fill in a second set of fields that only the carousel uses.
-   */
-  const items = carousel ? slice.items.slice(0, 1) : slice.items;
+  const trigger = slice.primary.autoplay ? "auto" : "hover";
 
   return (
     <section className="flex flex-col md:flex-row items-center justify-center gap-gutter px-gutter">
-      {items.map((item, index) => (
-        <div className="w-full min-w-0" key={index}>
-          <LinkWrapper url={item.link?.url}>
-            <SizeWrapper size={item.size}>
-              <figure
-                className="image-figure"
-                style={
-                  isNarrow(item.size)
-                    ? { maxWidth: imageCap(item.image, item.ratio) }
-                    : undefined
-                }
-              >
-                {carousel ? (
+      {row.map((cell, index) => {
+        const [lead] = cell;
+        const sizes = rowSizes(row.length, lead.size);
+
+        return (
+          <div className="w-full min-w-0" key={index}>
+            <SizeWrapper size={lead.size}>
+              <figure className="image-figure group" style={figureCap(lead)}>
+                {cell.length > 1 ? (
                   <FrameCycle
-                    frames={slice.items.map((frame) => frame.image)}
-                    ratio={item.ratio}
-                    sizes={rowSizes(1, item.size)}
-                    alt={item.image?.alt ?? ""}
-                    shadow={item.shadow}
+                    // A video frame cycles as its poster: a cell that cycles is
+                    // a set of stills being compared, and an item's own image is
+                    // already the still that stands for it.
+                    frames={cell.map((frame) => frame.image)}
+                    ratio={lead.ratio}
+                    sizes={sizes}
+                    alt={lead.image?.alt ?? ""}
+                    shadow={lead.shadow}
                     trigger={trigger}
                     // A carousel keeps its place when the pointer leaves or it
                     // scrolls away; only a grid card starts its preview over.
@@ -77,17 +111,14 @@ const Image = ({ slice, context }) => {
                     cap={false}
                   />
                 ) : (
-                  <ImageWrapper
-                    item={item}
-                    sizes={rowSizes(slice.items.length, item.size)}
-                  />
+                  <MediaWrapper item={lead} sizes={sizes} />
                 )}
-                <Caption item={item} context={context} />
+                <Caption item={lead} context={context} />
               </figure>
             </SizeWrapper>
-          </LinkWrapper>
-        </div>
-      ))}
+          </div>
+        );
+      })}
     </section>
   );
 };

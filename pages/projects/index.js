@@ -8,7 +8,7 @@ import {
   DEFAULT_CATEGORY,
   useProjectView,
 } from "components";
-import { createClient } from "prismicio";
+import { createClient, getNewsletter } from "prismicio";
 
 export default function Projects({ content, categories }) {
   const { view, category } = useProjectView(categories);
@@ -38,7 +38,10 @@ export default function Projects({ content, categories }) {
 // the way the home page strapline does.
 Projects.getLayout = function getLayout(page) {
   return (
-    <DefaultLayout lede={<ProjectFilters categories={page.props.categories} />}>
+    <DefaultLayout
+      lede={<ProjectFilters categories={page.props.categories} />}
+      newsletter={page.props.newsletter}
+    >
       {page}
     </DefaultLayout>
   );
@@ -57,6 +60,6 @@ export async function getStaticProps({ previewData }) {
   ].sort();
 
   return {
-    props: { content, categories },
+    props: { content, categories, newsletter: await getNewsletter(client) },
   };
 }

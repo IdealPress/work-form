@@ -3,11 +3,11 @@ import { useState } from "react";
 import { SliceZone } from "@prismicio/react";
 
 // Lib
-import { createClient } from "prismicio";
+import { createClient, getNewsletter } from "prismicio";
 import { components } from "slices";
 
 // Components
-import { DefaultLayout, NewsletterBar, Splash } from "components";
+import { DefaultLayout, Splash } from "components";
 
 export default function Home({ content }) {
   const [showSplash, setShowSplash] = useState(true);
@@ -34,13 +34,14 @@ export default function Home({ content }) {
           />
         )}
       </main>
-      <NewsletterBar content={content} />
     </>
   );
 }
 
 Home.getLayout = function getLayout(page) {
-  return <DefaultLayout>{page}</DefaultLayout>;
+  return (
+    <DefaultLayout newsletter={page.props.newsletter}>{page}</DefaultLayout>
+  );
 };
 
 const homeGraphQuery = `{
@@ -56,11 +57,19 @@ const homeGraphQuery = `{
           }
         }
       }
-      ...on video_block {
+      ...on image_multiple {
         variation {
           ...on default {
+            items {
+              ...itemsFields
+            }
+          }
+          ...on carousel {
             primary {
               ...primaryFields
+            }
+            items {
+              ...itemsFields
             }
           }
         }
@@ -89,6 +98,6 @@ export async function getStaticProps({ previewData }) {
     graphQuery: homeGraphQuery,
   });
   return {
-    props: { content },
+    props: { content, newsletter: await getNewsletter(client) },
   };
 }

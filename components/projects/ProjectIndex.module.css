@@ -32,7 +32,7 @@
  * response to a pointer when there is nothing behind it to open.
  */
 .plain {
-  @apply cursor-default;
+  @apply cursor-default text-grey;
 }
 
 /*

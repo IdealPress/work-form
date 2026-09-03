@@ -16,7 +16,7 @@
             "project": {
               "type": "SharedSlice"
             },
-            "video_block": {
+            "image_multiple": {
               "type": "SharedSlice"
             }
           }

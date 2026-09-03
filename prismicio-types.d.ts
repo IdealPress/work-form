@@ -108,7 +108,7 @@ export type AboutDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<AboutDocumentData>, "about", Lang>;
 
 type HomeDocumentDataSlicesSlice =
-  TextBlockSlice | ProjectSlice | VideoBlockSlice;
+  TextBlockSlice | ProjectSlice | ImageMultipleSlice;
 
 /**
  * Content for Home documents
@@ -177,8 +177,7 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
-type ProjectDocumentDataSlicesSlice =
-  ImageMultipleSlice | TextBlockSlice | VideoBlockSlice;
+type ProjectDocumentDataSlicesSlice = ImageMultipleSlice | TextBlockSlice;
 
 type ProjectDocumentDataSlices1Slice = never;
 
@@ -304,120 +303,106 @@ export type ProjectDocument<Lang extends string = string> =
 export type AllDocumentTypes = AboutDocument | HomeDocument | ProjectDocument;
 
 /**
- * Primary content in *Image → Default → Primary*
- */
-export interface ImageMultipleSliceDefaultPrimary {
-  /**
-   * Auto-play carousel field in *Image → Default → Primary*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: false
-   * - **API ID Path**: image_multiple.default.primary.carousel
-   * - **Documentation**: https://prismic.io/docs/fields/boolean
-   */
-  carousel: prismic.BooleanField;
-
-  /**
-   * Progress on hover field in *Image → Default → Primary*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: false
-   * - **API ID Path**: image_multiple.default.primary.carousel_hover
-   * - **Documentation**: https://prismic.io/docs/fields/boolean
-   */
-  carousel_hover: prismic.BooleanField;
-}
-
-/**
- * Primary content in *Image → Items*
+ * Primary content in *Image → Default → Items*
  */
 export interface ImageMultipleSliceDefaultItem {
   /**
-   * Image field in *Image → Items*
+   * Image field in *Image → Default → Items*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: image_multiple.items[].image
+   * - **API ID Path**: image_multiple.default.items[].image
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
-  image: prismic.ImageField<"4:5" | "1:1" | "3:2" | "16:9" | "5:4" | "4:3">;
+  image: prismic.ImageField<
+    "4:5" | "1:1" | "3:2" | "16:9" | "5:4" | "4:3" | "21:9"
+  >;
 
   /**
-   * Ratio field in *Image → Items*
+   * Video (takes over from the image, which becomes its poster) field in *Image → Default → Items*
+   *
+   * - **Field Type**: Embed
+   * - **Placeholder**: Paste a Vimeo or Gumlet share link
+   * - **API ID Path**: image_multiple.default.items[].video
+   * - **Documentation**: https://prismic.io/docs/fields/embed
+   */
+  video: prismic.EmbedField;
+
+  /**
+   * Ratio field in *Image → Default → Items*
    *
    * - **Field Type**: Select
    * - **Placeholder**: *None*
    * - **Default Value**: main
-   * - **API ID Path**: image_multiple.items[].ratio
+   * - **API ID Path**: image_multiple.default.items[].ratio
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
   ratio: prismic.SelectField<
-    "main" | "16:9" | "5:4" | "4:5" | "4:3" | "1:1" | "3:2",
+    "main" | "16:9" | "5:4" | "4:5" | "4:3" | "1:1" | "3:2" | "21:9",
     "filled"
   >;
 
   /**
-   * Size field in *Image → Items*
+   * Size field in *Image → Default → Items*
    *
    * - **Field Type**: Select
    * - **Placeholder**: *None*
    * - **Default Value**: Full
-   * - **API ID Path**: image_multiple.items[].size
+   * - **API ID Path**: image_multiple.default.items[].size
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
   size: prismic.SelectField<"Full" | "Regular", "filled">;
 
   /**
-   * Drop shadow field in *Image → Items*
+   * Video background field in *Image → Default → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: None
+   * - **API ID Path**: image_multiple.default.items[].background
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background: prismic.SelectField<"None" | "Black", "filled">;
+
+  /**
+   * Drop shadow field in *Image → Default → Items*
    *
    * - **Field Type**: Boolean
    * - **Placeholder**: *None*
    * - **Default Value**: false
-   * - **API ID Path**: image_multiple.items[].shadow
+   * - **API ID Path**: image_multiple.default.items[].shadow
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
   shadow: prismic.BooleanField;
 
   /**
-   * Hide from project grid preview field in *Image → Items*
+   * Hide from project grid preview field in *Image → Default → Items*
    *
    * - **Field Type**: Boolean
    * - **Placeholder**: *None*
    * - **Default Value**: false
-   * - **API ID Path**: image_multiple.items[].hide_from_grid
+   * - **API ID Path**: image_multiple.default.items[].hide_from_grid
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
   hide_from_grid: prismic.BooleanField;
 
   /**
-   * Link field in *Image → Items*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: image_multiple.items[].link
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
-
-  /**
-   * Caption field in *Image → Items*
+   * Caption field in *Image → Default → Items*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: image_multiple.items[].caption
+   * - **API ID Path**: image_multiple.default.items[].caption
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   caption: prismic.KeyTextField;
 
   /**
-   * Show Caption field in *Image → Items*
+   * Show Caption field in *Image → Default → Items*
    *
    * - **Field Type**: Boolean
    * - **Placeholder**: *None*
    * - **Default Value**: true
-   * - **API ID Path**: image_multiple.items[].show_caption
+   * - **API ID Path**: image_multiple.default.items[].show_caption
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
   show_caption: prismic.BooleanField;
@@ -432,14 +417,162 @@ export interface ImageMultipleSliceDefaultItem {
  */
 export type ImageMultipleSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<ImageMultipleSliceDefaultPrimary>,
+  Record<string, never>,
   Simplify<ImageMultipleSliceDefaultItem>
+>;
+
+/**
+ * Primary content in *Image → Carousel → Primary*
+ */
+export interface ImageMultipleSliceCarouselPrimary {
+  /**
+   * Auto-play carousel field in *Image → Carousel → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: image_multiple.carousel.primary.autoplay
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  autoplay: prismic.BooleanField;
+}
+
+/**
+ * Primary content in *Image → Carousel → Items*
+ */
+export interface ImageMultipleSliceCarouselItem {
+  /**
+   * Cycle with the item above field in *Image → Carousel → Items*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: image_multiple.carousel.items[].cycle
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  cycle: prismic.BooleanField;
+
+  /**
+   * Image field in *Image → Carousel → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_multiple.carousel.items[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<
+    "4:5" | "1:1" | "3:2" | "16:9" | "5:4" | "4:3" | "21:9"
+  >;
+
+  /**
+   * Video (takes over from the image, which becomes its poster) field in *Image → Carousel → Items*
+   *
+   * - **Field Type**: Embed
+   * - **Placeholder**: Paste a Vimeo or Gumlet share link
+   * - **API ID Path**: image_multiple.carousel.items[].video
+   * - **Documentation**: https://prismic.io/docs/fields/embed
+   */
+  video: prismic.EmbedField;
+
+  /**
+   * Ratio field in *Image → Carousel → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: main
+   * - **API ID Path**: image_multiple.carousel.items[].ratio
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  ratio: prismic.SelectField<
+    "main" | "16:9" | "5:4" | "4:5" | "4:3" | "1:1" | "3:2" | "21:9",
+    "filled"
+  >;
+
+  /**
+   * Size field in *Image → Carousel → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Full
+   * - **API ID Path**: image_multiple.carousel.items[].size
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  size: prismic.SelectField<"Full" | "Regular", "filled">;
+
+  /**
+   * Video background field in *Image → Carousel → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: None
+   * - **API ID Path**: image_multiple.carousel.items[].background
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background: prismic.SelectField<"None" | "Black", "filled">;
+
+  /**
+   * Drop shadow field in *Image → Carousel → Items*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: image_multiple.carousel.items[].shadow
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  shadow: prismic.BooleanField;
+
+  /**
+   * Hide from project grid preview field in *Image → Carousel → Items*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: image_multiple.carousel.items[].hide_from_grid
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  hide_from_grid: prismic.BooleanField;
+
+  /**
+   * Caption field in *Image → Carousel → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_multiple.carousel.items[].caption
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  caption: prismic.KeyTextField;
+
+  /**
+   * Show Caption field in *Image → Carousel → Items*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: image_multiple.carousel.items[].show_caption
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  show_caption: prismic.BooleanField;
+}
+
+/**
+ * Carousel variation for Image Slice
+ *
+ * - **API ID**: `carousel`
+ * - **Description**: ImageMultiple
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ImageMultipleSliceCarousel = prismic.SharedSliceVariation<
+  "carousel",
+  Simplify<ImageMultipleSliceCarouselPrimary>,
+  Simplify<ImageMultipleSliceCarouselItem>
 >;
 
 /**
  * Slice variation for *Image*
  */
-type ImageMultipleSliceVariation = ImageMultipleSliceDefault;
+type ImageMultipleSliceVariation =
+  | ImageMultipleSliceDefault
+  | ImageMultipleSliceCarousel;
 
 /**
  * Image Shared Slice
@@ -620,139 +753,6 @@ export type TextBlockSlice = prismic.SharedSlice<
   TextBlockSliceVariation
 >;
 
-/**
- * Primary content in *VideoBlock → Default → Primary*
- */
-export interface VideoBlockSliceDefaultPrimary {
-  /**
-   * Video Source field in *VideoBlock → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **Default Value**: Vimeo
-   * - **API ID Path**: video_block.default.primary.video_source
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  video_source: prismic.SelectField<"Vimeo" | "Gumlet", "filled">;
-
-  /**
-   * Vimeo Embed field in *VideoBlock → Default → Primary*
-   *
-   * - **Field Type**: Embed
-   * - **Placeholder**: *None*
-   * - **API ID Path**: video_block.default.primary.vimeo_embed
-   * - **Documentation**: https://prismic.io/docs/fields/embed
-   */
-  vimeo_embed: prismic.EmbedField;
-
-  /**
-   * Gumlet Stream URL field in *VideoBlock → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: https://video.gumlet.io/<collection-id>/<asset-id>/main.m3u8
-   * - **API ID Path**: video_block.default.primary.gumlet_url
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  gumlet_url: prismic.KeyTextField;
-
-  /**
-   * Gumlet Poster Image field in *VideoBlock → Default → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: video_block.default.primary.gumlet_poster
-   * - **Documentation**: https://prismic.io/docs/fields/image
-   */
-  gumlet_poster: prismic.ImageField<never>;
-
-  /**
-   * Gumlet Aspect Ratio field in *VideoBlock → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **Default Value**: 16:9
-   * - **API ID Path**: video_block.default.primary.gumlet_ratio
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  gumlet_ratio: prismic.SelectField<
-    "16:9" | "4:5" | "1:1" | "5:4" | "4:3" | "3:2" | "21:9" | "Auto",
-    "filled"
-  >;
-
-  /**
-   * Size field in *VideoBlock → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **Default Value**: Full
-   * - **API ID Path**: video_block.default.primary.size
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  size: prismic.SelectField<"Full" | "Regular", "filled">;
-
-  /**
-   * Background field in *VideoBlock → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **Default Value**: None
-   * - **API ID Path**: video_block.default.primary.background
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  background: prismic.SelectField<"None" | "Black", "filled">;
-
-  /**
-   * Custom Caption field in *VideoBlock → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: video_block.default.primary.custom_caption
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  custom_caption: prismic.KeyTextField;
-
-  /**
-   * Show Caption field in *VideoBlock → Default → Primary*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: false
-   * - **API ID Path**: video_block.default.primary.show_caption
-   * - **Documentation**: https://prismic.io/docs/fields/boolean
-   */
-  show_caption: prismic.BooleanField;
-}
-
-/**
- * Default variation for VideoBlock Slice
- *
- * - **API ID**: `default`
- * - **Description**: VideoBlock
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type VideoBlockSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<VideoBlockSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *VideoBlock*
- */
-type VideoBlockSliceVariation = VideoBlockSliceDefault;
-
-/**
- * VideoBlock Shared Slice
- *
- * - **API ID**: `video_block`
- * - **Description**: VideoBlock
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type VideoBlockSlice = prismic.SharedSlice<
-  "video_block",
-  VideoBlockSliceVariation
->;
-
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -786,10 +786,12 @@ declare module "@prismicio/client" {
       ProjectDocumentDataSlices1Slice,
       AllDocumentTypes,
       ImageMultipleSlice,
-      ImageMultipleSliceDefaultPrimary,
       ImageMultipleSliceDefaultItem,
+      ImageMultipleSliceCarouselPrimary,
+      ImageMultipleSliceCarouselItem,
       ImageMultipleSliceVariation,
       ImageMultipleSliceDefault,
+      ImageMultipleSliceCarousel,
       ProjectSlice,
       ProjectSliceDefaultItem,
       ProjectSliceVariation,
@@ -798,10 +800,6 @@ declare module "@prismicio/client" {
       TextBlockSliceDefaultPrimary,
       TextBlockSliceVariation,
       TextBlockSliceDefault,
-      VideoBlockSlice,
-      VideoBlockSliceDefaultPrimary,
-      VideoBlockSliceVariation,
-      VideoBlockSliceDefault,
     };
   }
 }
