@@ -21,7 +21,6 @@ export default function StreamPlayer({
   src,
   poster,
   shape,
-  fit = "cover",
   cap = true,
   className = "",
   autoPlay = true,
@@ -92,19 +91,10 @@ export default function StreamPlayer({
 
   if (!src) return null;
 
-  // A video only fills a box it shares a shape with. `contain` is for the ones
-  // that don't — a portrait recording framed to a landscape ratio so it keeps a
-  // row even — and the bars it leaves have to be some colour, so the box itself
-  // is black and the video sits on it. The poster is painted with the same
-  // object-fit as the video, so it's framed identically and nothing shifts the
-  // moment the first frame lands.
-  const contain = fit === "contain";
-
-  const classes = [
-    "w-full h-full",
-    contain ? "object-contain" : "object-cover",
-    className,
-  ]
+  // The box is given the video's own shape, so filling it crops nothing. The
+  // poster is painted with the same object-fit as the video, so it's framed
+  // identically and nothing shifts the moment the first frame lands.
+  const classes = ["w-full h-full object-cover", className]
     .filter(Boolean)
     .join(" ");
 
@@ -116,7 +106,7 @@ export default function StreamPlayer({
 
   return (
     <div
-      className={`mx-auto${contain ? " bg-black" : ""}`}
+      className="mx-auto"
       style={{
         aspectRatio: shape,
         maxWidth: cap ? cappedWidth(shape) : undefined,

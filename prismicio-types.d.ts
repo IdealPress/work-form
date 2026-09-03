@@ -354,17 +354,6 @@ export interface ImageMultipleSliceDefaultItem {
   size: prismic.SelectField<"Full" | "Regular", "filled">;
 
   /**
-   * Video background field in *Image → Default → Items*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **Default Value**: None
-   * - **API ID Path**: image_multiple.default.items[].background
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  background: prismic.SelectField<"None" | "Black", "filled">;
-
-  /**
    * Drop shadow field in *Image → Default → Items*
    *
    * - **Field Type**: Boolean
@@ -395,17 +384,6 @@ export interface ImageMultipleSliceDefaultItem {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   caption: prismic.KeyTextField;
-
-  /**
-   * Show Caption field in *Image → Default → Items*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: true
-   * - **API ID Path**: image_multiple.default.items[].show_caption
-   * - **Documentation**: https://prismic.io/docs/fields/boolean
-   */
-  show_caption: prismic.BooleanField;
 }
 
 /**
@@ -500,17 +478,6 @@ export interface ImageMultipleSliceCarouselItem {
   size: prismic.SelectField<"Full" | "Regular", "filled">;
 
   /**
-   * Video background field in *Image → Carousel → Items*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **Default Value**: None
-   * - **API ID Path**: image_multiple.carousel.items[].background
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  background: prismic.SelectField<"None" | "Black", "filled">;
-
-  /**
    * Drop shadow field in *Image → Carousel → Items*
    *
    * - **Field Type**: Boolean
@@ -541,17 +508,6 @@ export interface ImageMultipleSliceCarouselItem {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   caption: prismic.KeyTextField;
-
-  /**
-   * Show Caption field in *Image → Carousel → Items*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: true
-   * - **API ID Path**: image_multiple.carousel.items[].show_caption
-   * - **Documentation**: https://prismic.io/docs/fields/boolean
-   */
-  show_caption: prismic.BooleanField;
 }
 
 /**
@@ -665,17 +621,6 @@ export interface ProjectSliceDefaultItem {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   caption: prismic.KeyTextField;
-
-  /**
-   * Show Caption field in *Project → Items*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: true
-   * - **API ID Path**: project.items[].show_caption
-   * - **Documentation**: https://prismic.io/docs/fields/boolean
-   */
-  show_caption: prismic.BooleanField;
 }
 
 /**

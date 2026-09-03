@@ -4,28 +4,16 @@ import { hasVideo, imageCap, isNarrow, rowSizes } from "lib";
 
 /*
  * The caption a plain image and a carousel both sit under, so the two paths
- * can't drift apart. It falls back to the document's own title and tags when
- * the editor hasn't written one.
+ * can't drift apart. An item with nothing written on it simply has none: the
+ * caption fades in under the pointer, so there is no longer a toggle to switch
+ * it off with — an empty one is already silent until you go looking for it.
  */
-const Caption = ({ item, context }) => (
+const Caption = ({ item }) => (
   <figcaption className="leading-tight text-base pt-2">
-    {item.show_caption && (
-      <>
-        {item.caption ? (
-          <p className="text-grey opacity-0 group-hover:opacity-100 transition-opacity">
-            {item.caption}
-          </p>
-        ) : (
-          <p className="group-focus:text-grey group-hover:text-grey opacity-0 group-hover:opacity-100 transition-opacity">
-            {context.data.title}
-            {context.tags.map((tag, index) => (
-              <span className="ml-2 text-grey" key={index}>
-                {tag}
-              </span>
-            ))}
-          </p>
-        )}
-      </>
+    {item.caption && (
+      <p className="text-grey opacity-0 group-hover:opacity-100 transition-opacity">
+        {item.caption}
+      </p>
     )}
   </figcaption>
 );
@@ -71,7 +59,7 @@ const figureCap = (lead) =>
  * stand for the whole cell, so the frames cycling behind it don't each ask for
  * a set of fields only the first one is read from.
  */
-const Image = ({ slice, context }) => {
+const Image = ({ slice }) => {
   const row = cells(slice.items);
 
   /*
@@ -113,7 +101,7 @@ const Image = ({ slice, context }) => {
                 ) : (
                   <MediaWrapper item={lead} sizes={sizes} />
                 )}
-                <Caption item={lead} context={context} />
+                <Caption item={lead} />
               </figure>
             </SizeWrapper>
           </div>

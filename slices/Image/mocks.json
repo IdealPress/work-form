@@ -131,13 +131,6 @@
               "value": "fellow",
               "type": "Text"
             }
-          ],
-          [
-            "show_caption",
-            {
-              "__TYPE__": "BooleanContent",
-              "value": false
-            }
           ]
         ]
       },
@@ -267,13 +260,6 @@
               "__TYPE__": "FieldContent",
               "value": "fellow",
               "type": "Text"
-            }
-          ],
-          [
-            "show_caption",
-            {
-              "__TYPE__": "BooleanContent",
-              "value": false
             }
           ]
         ]
@@ -424,13 +410,6 @@
               "value": "fellow",
               "type": "Text"
             }
-          ],
-          [
-            "show_caption",
-            {
-              "__TYPE__": "BooleanContent",
-              "value": false
-            }
           ]
         ]
       },
@@ -567,13 +546,6 @@
               "__TYPE__": "FieldContent",
               "value": "fellow",
               "type": "Text"
-            }
-          ],
-          [
-            "show_caption",
-            {
-              "__TYPE__": "BooleanContent",
-              "value": false
             }
           ]
         ]

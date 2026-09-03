@@ -93,18 +93,6 @@
             "default_value": "Full"
           }
         },
-        "background": {
-          "type": "Select",
-          "config": {
-            "label": "Video background",
-            "placeholder": "",
-            "options": [
-              "None",
-              "Black"
-            ],
-            "default_value": "None"
-          }
-        },
         "shadow": {
           "type": "Boolean",
           "config": {
@@ -128,15 +116,6 @@
           "config": {
             "label": "Caption",
             "placeholder": ""
-          }
-        },
-        "show_caption": {
-          "type": "Boolean",
-          "config": {
-            "label": "Show Caption",
-            "placeholder_false": "false",
-            "placeholder_true": "true",
-            "default_value": true
           }
         }
       },
@@ -250,18 +229,6 @@
             "default_value": "Full"
           }
         },
-        "background": {
-          "type": "Select",
-          "config": {
-            "label": "Video background",
-            "placeholder": "",
-            "options": [
-              "None",
-              "Black"
-            ],
-            "default_value": "None"
-          }
-        },
         "shadow": {
           "type": "Boolean",
           "config": {
@@ -285,15 +252,6 @@
           "config": {
             "label": "Caption",
             "placeholder": ""
-          }
-        },
-        "show_caption": {
-          "type": "Boolean",
-          "config": {
-            "label": "Show Caption",
-            "placeholder_false": "false",
-            "placeholder_true": "true",
-            "default_value": true
           }
         }
       },

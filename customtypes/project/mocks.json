@@ -255,13 +255,6 @@
                       "value": "they",
                       "type": "Text"
                     }
-                  ],
-                  [
-                    "show_caption",
-                    {
-                      "__TYPE__": "BooleanContent",
-                      "value": false
-                    }
                   ]
                 ]
               }

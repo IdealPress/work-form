@@ -151,13 +151,6 @@
               "value": "bend",
               "type": "Text"
             }
-          ],
-          [
-            "show_caption",
-            {
-              "__TYPE__": "BooleanContent",
-              "value": true
-            }
           ]
         ]
       }
