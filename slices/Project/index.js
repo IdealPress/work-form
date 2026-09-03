@@ -43,7 +43,7 @@ const Project = ({ slice }) => {
                 />
               </LinkWrapper>
               <figcaption className="md:peer-hover:opacity-100 md:peer-focus:opacity-100 md:opacity-0 transition-opacity leading-tight text-base md:text-lg pt-2">
-                {item.caption && (
+                {item.caption ? (
                   <p className="leading-snug text-base md:text-lg space-x-2 text-grey">
                     <span>{item.caption}</span>
                     {item.link?.url && (
@@ -51,6 +51,10 @@ const Project = ({ slice }) => {
                         <TopRightArrow className="w-2.5 h-2.5 md:w-3 md:h-3" />
                       </span>
                     )}
+                  </p>
+                ) : (
+                  <p className="leading-snug text-base md:text-lg">
+                    {item.project?.data?.title}
                   </p>
                 )}
               </figcaption>

@@ -48,12 +48,13 @@ Home.getLayout = function getLayout(page) {
  * The fields the page actually renders. `...itemsFields` follows each slice's
  * model, so a field retired from a model leaves this query on its own.
  *
- * A project slice's linked document is deliberately not spread: the card shows
- * the editor's caption or nothing, and the only thing left that it reads off
- * the link is the uid its href is built from — which Prismic resolves with the
- * link itself, without the document's data. Pulling `...projectFields` for it
- * was carrying every linked project's whole document, slices included, into the
- * home page's props: 1.5 MB of payload to render thirty hrefs.
+ * A project slice's linked document is named field by field rather than spread:
+ * the card falls back to the project's own title when the editor hasn't written
+ * a caption, and that title is the only thing it reads off the link — the uid
+ * its href is built from comes back with the link itself, without the
+ * document's data. `...projectFields` was carrying every linked project's whole
+ * document, slices included, into the home page's props to render one line of
+ * type apiece.
  */
 const homeGraphQuery = `{
   home {
@@ -90,6 +91,11 @@ const homeGraphQuery = `{
           ...on default {
             items {
               ...itemsFields
+              project {
+                ...on project {
+                  title
+                }
+              }
             }
           }
         }
